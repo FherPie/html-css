@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+.card img{
+	max-height: 150px;
+}
+
+.card .descripcion{
+color:graytext;	
+}
+
+.price{
+	font-weight: bold;
+	font-size: 16px;
+	
+}
