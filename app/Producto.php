@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
  
+    protected  $primaryKey = 'id_producto';
+    
+    public  $detallesArchivos;
     /**
      * The table associated with the model.
      *
@@ -30,6 +33,9 @@ class Producto extends Model
         'nombre',
         'nombre_comercial',
         'peso',
+        'precio_referencial_venta',
+        'indicador_vista_tienda',
+        'id_sub_categoria_producto'
     ];
     
     /**
@@ -44,4 +50,13 @@ class Producto extends Model
          'version',
     ];
     
+    
+    public function detallesPedido() {
+        return $this->hasMany('App\DetallePedido');
+    }
+    
+    
+    public function detallesArchivo() {
+        return $this->hasMany('App\Archivo', 'producto_id', "id_producto");
+    }
 }

@@ -11,5 +11,16 @@ color:graytext;
 .price{
 	font-weight: bold;
 	font-size: 16px;
-	
+}
+
+.container{
+	background-color: #eeeeee;
+}
+
+.aside{
+	background-color:#eee;
+	height: 100%;
+	      	 float:left;
+display: inline-block;
+width: 15%;
 }

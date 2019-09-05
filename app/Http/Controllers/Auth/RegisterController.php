@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\FormaPago;
+use App\Carro;
 
 class RegisterController extends Controller
 {
@@ -27,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -68,4 +73,47 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    
+    public function getSignup(){
+        return view('users.signup');
+    }
+    
+    public function postSignup(Request $request){
+        
+        $this->validate($request, [
+            'nombre'=> 'required|string|max:255',
+            'email'=> 'required|string|email|max:255|unique:users',
+            'password'=> 'required|string|min:6|confirmed'
+        ]);
+        
+        $user= new User([
+            'name' => $request['nombre'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password'])
+        ]);
+
+        $user->save();
+        
+        Auth::login($user);
+        
+        
+        
+        if(!Session::has('cart')){
+            return redirect()->route('users.profile');
+        }
+        
+        $oldCart=Session::get('cart');
+        $cart= new Carro($oldCart);
+        $total= $cart->totalPrice;
+        $request->session()->put('clientePotencial', Auth::user());
+        $FormasPago= FormaPago::all();
+        //             Session::has('oldUrl', $request->url());
+        if( Session::has('oldUrl')){
+            Session::forget('oldUrl');
+            return view('shop.checkout', ['total'=>$total, 'formasPago'=> $FormasPago]);
+        }
+
+        return redirect()->route('producto.index');
+    }    
 }
+
