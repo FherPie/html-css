@@ -1,7 +1,7 @@
 @extends('layouts.master') @section('title') Ingresar al Sistema
 @endsection @section('content')
-<div class="row">
-	<div class="col-md-12 col-md-offset-6">
+<div class="row mt-5">
+	<div class="col-md-12 col-md-offset-6 mt-5">
 		<h1>Perfil de Usuario</h1>
 		<h1>Sus Pedidos</h1>
 		

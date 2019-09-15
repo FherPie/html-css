@@ -23,6 +23,11 @@ Route::get('/vistaProducto', [
     'as' => 'producto.vista'
 ]);
 
+// Route::get('/{id?}', [
+//     'uses' => 'ProductoController@getIndex',
+//     'as' => 'producto.index'
+// ]);
+
 Route::get('/', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'

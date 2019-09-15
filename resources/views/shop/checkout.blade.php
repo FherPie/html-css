@@ -19,21 +19,24 @@ input:required:valid {
 @endsection() @section('content')
 
 
-<div class="container">
-	<h1>Checkout</h1>
-	<h4>Your Total: ${{ $total }}</h4>
-	 @if(count($errors)>0)
-		<div class="alert alert-danger">
-			@foreach($errors->all() as $error)
-			<p>{{$error}}</p>
-			@endforeach
+<div class="container mt-5">
+	<div class="row mt-5">
+		<div class="col-sm">
+			<h1 class="mt-3">Detalles de Envío</h1>
+			<h4>Your Total: ${{ $total }}</h4>
+			@if(count($errors)>0)
+			<div class="alert alert-danger">
+				@foreach($errors->all() as $error)
+				<p>{{$error}}</p>
+				@endforeach
+			</div>
+			@endif
 		</div>
-	@endif
+	</div>
 
-
-
-	<form id="checkout-form" class="was-validated" action="{{route('checkout')}}" method="post">
-		<div class="row">
+	<form id="checkout-form" class="was-validated"
+		action="{{route('checkout')}}" method="post">
+		<div class="row mt-5">
 			<div class="col-sm">
 				<h3>Datos Completos</h3>
 				<div class="row">
@@ -128,39 +131,38 @@ input:required:valid {
 					</div>
 				</div>
 			</div>
-		
-
-		<div class="col-sm">
-
-			<h3>Forma de Pago y Envío</h3>
 
 
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						@foreach($formasPago as $forma)
-						<th><div class="form-check" >
-								<label for="formaPago" class="form-check-label"></label>
-								 <input type="radio"
-									class="form-check-input"  value="{{$forma->id}}"
-									name="formaPago" required   >{{$forma->nombre}}
-							</div></th> @endforeach
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						@foreach($formasPago as $forma)
-						<td>{{$forma->nombre}}</td> @endforeach
-					</tr>
-				</tbody>
-			</table>
+			<div class="col-sm">
+
+				<h3>Forma de Pago y Envío</h3>
 
 
-			<button type="submit" class="btn btn-success" id="validarCliente">
-				Guardar</button>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							@foreach($formasPago as $forma)
+							<th><div class="form-check">
+									<label for="formaPago" class="form-check-label"></label> <input
+										type="radio" class="form-check-input" value="{{$forma->id}}"
+										name="formaPago" required>{{$forma->nombre}}
+								</div></th> @endforeach
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							@foreach($formasPago as $forma)
+							<td>{{$forma->nombre}}</td> @endforeach
+						</tr>
+					</tbody>
+				</table>
+
+
+				<button type="submit" class="btn btn-success" id="validarCliente">
+					Guardar</button>
+			</div>
 		</div>
-	</div>
-		 {{ csrf_field() }}
+		{{ csrf_field() }}
 	</form>
 
 

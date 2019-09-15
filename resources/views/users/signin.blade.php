@@ -3,8 +3,8 @@
 Ingresar al Sistema
 @endsection
 @section('content')
-<div class="row">
-	<div class="col-md-4 col-md-offset-6">
+<div class="row mt-5">
+	<div class="col-md-4 col-md-offset-6  mt-5">
 		<h1>Bienvenido de Vuelta</h1>
 		@if(count($errors)>0)
 		<div class="alert alert-danger">

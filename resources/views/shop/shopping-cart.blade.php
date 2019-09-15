@@ -3,12 +3,10 @@
 @section('title')
 Items agregados
 @endsection
-
-
 @section('content')
 @if(Session::has('cart'))
-<div class="row">
- <div class="col-sm-15 col-md-12 col-md-offset-3 col-sm-offset-3">
+<div class="row mt-5">
+ <div class="col-sm-15 col-md-12 col-md-offset-3 col-sm-offset-3 mt-5">
  
  <table class="table table-striped">
   <thead>

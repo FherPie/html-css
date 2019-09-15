@@ -17,11 +17,14 @@ class ProductoController extends Controller
   
     public function getIndex(Request $request){
         
+        $queryUser = Producto::query();
+        
+        $queryUser->orderBy('nombre','asc');
+        
         if($request->input('id')){
 //             $productos = DB::table('producto')->where('id_sub_categoria_producto', '=', $request->input('id'))->orderBy('nombre', 'asc')->paginate(5);
            
-            
-            $productosPaginados=DB::table('producto')->where('id_sub_categoria_producto', '=', $request->input('id'))->orderBy('nombre', 'asc')->paginate(5);
+            $queryUser->where('id_sub_categoria_producto','=',$request->input('id'));
         
         }else{
 //             $productos= Producto::all();
@@ -30,8 +33,6 @@ class ProductoController extends Controller
 //             ->orderBy('nombre', 'asc')
 //             ->get();
             
-            $productosPaginados=DB::table('producto')
-            ->orderBy('nombre', 'asc')->paginate(5);
         }    
         //         $subcategorias = DB::table('categoria_producto')->select('nombre', 'id_categoria_producto')->get();
         //         $subcategorias=  DB::table('sub_categoria_producto')->join('categoria_producto', 'sub_categoria_producto.id_categoria_producto', '=', 'categoria_producto.id_categoria_producto')
@@ -46,9 +47,16 @@ class ProductoController extends Controller
         
         //         $data = json_encode((array)$subcategorias);
         $request->session()->put('subcategorias', $subcategorias);
+        
+        
+        $productosPaginados = $queryUser->paginate(5);
 
-        return view('shop/index', [ 'subcategorias'=>$subcategorias], compact('productosPaginados'));
+        return view('shop/index',  compact('productosPaginados', $productosPaginados));
     }
+    
+    
+    
+    
     
     public function getProductoVista(Request $request){
         
