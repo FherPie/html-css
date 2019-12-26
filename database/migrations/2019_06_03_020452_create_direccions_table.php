@@ -18,7 +18,8 @@ class CreateDireccionsTable extends Migration
             $table->string('callePrimaria');
             $table->string('calleSecundaria');
             $table->string('referencia');
-            $table->int('user_id');
+            $table->integer('user_id');
+            $table->integer('ubicacion_id');
             $table->timestamps();
         });
     }

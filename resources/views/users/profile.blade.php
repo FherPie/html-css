@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('title') Ingresar al Sistema
+@extends('layouts.masterUsuario') @section('title') Ingresar al Sistema
 @endsection @section('content')
 <div class="row mt-5">
 	<div class="col-md-12 col-md-offset-6 mt-5">

@@ -39,7 +39,7 @@ class DetallePedido extends Model
     }
     
     public function producto(){
-        return $this->belongsTo('App\Producto');
+        return $this->belongsTo('App\Producto', 'producto_id');
     }
     
 }

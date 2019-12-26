@@ -5,7 +5,7 @@ Tienda
 @endsection
   <header>
 <!--Carousel Wrapper-->
-<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carousel-example-2" class="carousel slide carousel-fade mt-5" data-ride="carousel">
   <!--Indicators-->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
@@ -22,8 +22,8 @@ Tienda
         <div class="mask rgba-black-light"></div>
       </div>
       <div class="carousel-caption">
-        <h3 class="h3-responsive">Light mask</h3>
-        <p>First text</p>
+        <h3 class="h3-responsive">1600*707</h3>
+        <p>jpg</p>
       </div>
     </div>
     <div class="carousel-item">
@@ -34,19 +34,19 @@ Tienda
         <div class="mask rgba-black-strong"></div>
       </div>
       <div class="carousel-caption">
-        <h3 class="h3-responsive">Strong mask</h3>
-        <p>Secondary text</p>
+        <h3 class="h3-responsive">1321*583</h3>
+        <p>jpg</p>
       </div>
     </div>
     <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
-        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+        <img class="d-block w-100" src="{{ URL::to('img/c1.jpg')}}"
           alt="Third slide">
         <div class="mask rgba-black-slight"></div>
       </div>
       <div class="carousel-caption">
-        <h3 class="h3-responsive">Slight mask</h3>
+        <h3 class="h3-responsive">Slightsss mask</h3>
         <p>Third text</p>
       </div>
     </div>
@@ -54,11 +54,14 @@ Tienda
   <!--/.Slides-->
   <!--Controls-->
   <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<!--     <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+    <i class="fas fa-angle-left fa-2x"></i>
+
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+<!--     <span class="carousel-control-next-icon fa-10x  " aria-hidden="true"></span> -->
+    <i class="fas fa-angle-right fa-2x"></i>
     <span class="sr-only">Next</span>
   </a>
   <!--/.Controls-->
@@ -82,7 +85,7 @@ Tienda
 
 
 
-{{$productosPaginados->appends(Request::except('page'))->links("pagination::bootstrap-4")}}
+<!-- {{$productosPaginados->appends(Request::except('page'))->links("pagination::bootstrap-4")}}
 <div class="row">
 
 @foreach($productosPaginados as $product)
@@ -102,7 +105,7 @@ Tienda
 </div>
 
 @endforeach
-</div>
+</div> -->
 
 <!-- <section id="examples" class="text-center"> -->
 
@@ -136,8 +139,117 @@ Tienda
 
 <!-- {!! $productosPaginados->render() !!} -->
 
-{{$productosPaginados->appends(Request::except('page'))->links("pagination::bootstrap-4")}}
+<!-- {{$productosPaginados->appends(Request::except('page'))->links("pagination::bootstrap-4")}} -->
+
+<section id="masbuscados">
+
+<div class="container-fluid">
+             <div class="row">
+             <h4>Productos mas buscados</h4>
+                 <section class="regular slider">
+                 @foreach($productosPaginados as $product)
+                 <div class="card" style="width: 18rem;">
+                         <img class="card-img-top"
+                             src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                             alt="Card image cap">
+                         <div class="card-body">
+                         <!-- <h5 class="card-title">Card title</h5> -->
+                         <h5 class="card-title">  <a   target="_blank" href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
+
+                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                         </div>
+                     </div>
+                     @endforeach
+                    
+                     
+                 </section>
+             </div>
+         </div>
+</section>
+
+<section id="promociones">
+
+<div class="container-fluid">
+             <div class="row">
+             <h4 >Promiciones Hasta Agotar Stock</h4>
+                 <section class="regular slider">
+
+            
+                 @foreach($productosPromociones as $product)
+                     <div class="card" style="width: 18rem;">
+                         <img class="card-img-top"
+                             src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                             alt="Card image cap">
+                         <div class="card-body">
+                             <!-- <h5 class="card-title">Card title</h5> -->
+                            <h5 class="card-title">  <a   target="_blank" href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
+                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                         </div>
+                     </div>
+                     @endforeach
+
+                     
+
+                     
+                 </section>
+             </div>
+         </div>
+</section>
 
 
 
 @endsection
+
+@section('scripts')
+<script>
+ $(document).on('ready', function () {
+             $(".regular").slick({   
+              centerMode: true,  
+                 centerPadding: '60px',
+                 dots: false,
+                 infinite: true,
+                 speed: 300,
+                 slidesToShow: 5,
+                 slidesToScroll: 1,
+                 autoplay: false,
+  autoplaySpeed: 2000,
+                 responsive: [
+                     {
+                         breakpoint: 1024,
+                         settings: {
+                             slidesToShow: 2,
+                             slidesToScroll: 1,
+                            infinite: true,
+                            speed: 300,
+                             dots: true
+                         }
+                     },
+                     {
+                         breakpoint: 600,
+                         settings: {
+                             slidesToShow: 2,
+                             slidesToScroll: 1,
+                             speed: 300,
+                         }
+                     },
+                     {
+                         breakpoint: 480,
+                         settings: {
+                             slidesToShow: 1,
+                             slidesToScroll: 1,
+                             speed: 300,
+                         }
+                     }
+                     // You can unslick at a given breakpoint now by adding:
+                     // settings: "unslick"
+                     // instead of a settings object
+                 ]
+             });
+
+
+
+         });
+
+</script>
+@endsection
+

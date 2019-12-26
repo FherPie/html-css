@@ -13,6 +13,20 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+Route::get('nosotros', "ProductoController@nosotros");
+
+Route::get('afiliados', "ProductoController@afiliados");
+
+Route::get('/catalogo', "ProductoController@catalogo")->name('producto.catalogo');
+
+
+Route::post('ciudades', 'UbicacionesController@ciudades')->name('dynamicdependent.ciudades');
+
+
+Route::get('/orders', "OrdersController@index")->name('users.orders');
+
+
+
 Route::get('/home', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'
@@ -37,6 +51,11 @@ Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductoController@getAddToCart',
     'as' => 'producto.addToCart'
 ]);
+
+// Route::get('/add-to-cart-from-details/{id}', [
+//     'uses' => 'ProductoController@getAddToCartFromDetailsProducto',
+//     'as' => 'producto.addToCartFromDetailsProducto'
+// ]);
 
 Route::get('/add-to-cart-checkout/{id}', [
     'uses' => 'ProductoController@getAddToCartCheckOut',
@@ -67,9 +86,9 @@ Route::get('/checkout', [
     'middleware'=>'auth'
 ]);
 
-Route::post('/checkout', [
+Route::post('/guardarPedido', [
     'uses' => 'CheckOutController@postCheckout',
-    'as' => 'checkout',
+    'as' => 'guardarPedido',
     'middleware'=>'auth'
 ]);
 

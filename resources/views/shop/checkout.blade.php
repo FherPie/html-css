@@ -1,172 +1,238 @@
-@extends('layouts.master') @section('title') CheckOut @endsection
+@extends('layouts.master')
+@section('title') CheckOut @endsection
 @section('styles')
-<style type="text/css">
-input:required:invalid, input:focus:invalid {
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
-	background-position: right top;
-	background-repeat: no-repeat;
-	-moz-box-shadow: none;
-}
+@endsection()
+@section('content')
+<div class="container mt-5 clasePerfilMargenSuperior">
 
-input:required:valid {
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
-	background-position: right top;
-	background-repeat: no-repeat;
-}
-</style>
-@endsection() @section('content')
+      <div class="row mt-5">
+      <div class="col-sm">
+         @if(count($errors)>0)
+         <div class="alert alert-danger">
+        
+            <p>Existen campos que falta por completar mire debajo el resumen</p>
+          
+         </div>
+         @endif
+      </div>
+   </div>
+   <form id="check-out" action="{{route('guardarPedido')}}" method="post">
+      <div class="row">
+         <!--DATOS PERSONALES-->
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+               <div class="card-header">Finalizar la Compra</div>
+               <div class="card-body">
+                  <div class="form-group">
+                     <h5>Datos del Usuario</h5>
+                  </div>
+                  <div class="form-group">
+                     <label for="nombres">Nombres:</label>
+                     <input type="text" name="nombres" class="form-control" value="{{Session::has('clientePotencial')?
+                     Session::get('clientePotencial')->nombres:old('nombres')}}" id="nombres" placeholder="Ingrese sus nombres" >
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese sus nombres.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="apellidos">Apellidos:</label>
+                     <input type="text" name="apellidos" class="form-control" value="{{Session::has('clientePotencial')?
+                     Session::get('clientePotencial')->apellidos:old('apellidos')}}" id="apellidos" placeholder="Ingrese sus apellidos" >
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese sus apellidos.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="email">Email:</label>
+                     <input type="text" name="email" class="form-control" value="{{Session::has('clientePotencial')?
+                     Session::get('clientePotencial')->email:old('email')}}" id="email" placeholder="Ingrese su email" >
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor su email.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="celular">Celular:</label>
+                     <input type="text" name="celular" class="form-control" value="{{Session::has('clientePotencial')?
+                     Session::get('clientePotencial')->celular:old('celular')}}" id="celular" placeholder="Ingrese su celular" >
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese su celular.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="cedula">Cedula:</label>
+                     <input type="text" id="cedula" value="{{Session::has('clientePotencial')? Session::get('clientePotencial')->cedula:''}}" class="form-control" placeholder="Ingrese su Cédula" name="cedula"  >
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese su cédula.</div>
+                  </div>
+                  <div class="form-group">
+                     <h5>Datos de Entrega</h5>
+                  </div>
+                  <div class="form-group">
+                     <label for="principal">Calle Principal:</label>
+                     <input type="text" id="principal" value="{{Session::has('direccionClientePotencial')? Session::get('direccionClientePotencial')->callePrimaria:old('principal')}}" class="form-control" placeholder="Ingrese la calle principal" name="principal">
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese calle principal.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="secundaria">Calle Secundaria:</label>
+                     <input type="text" id="secundaria" value="{{Session::has('direccionClientePotencial')? Session::get('direccionClientePotencial')->calleSecundaria:old('secundaria')}}" class="form-control" placeholder="Ingrese la calle secundaria" name="secundaria">
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese calle secundaria.</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="numero">Numero:</label>
+                     <input type="text" id="numero" value="{{Session::has('direccionClientePotencial')? Session::get('direccionClientePotencial')->numero:old('numero')}}" class="form-control" placeholder="Ingrese el numero de casa" name="numero">
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese numero de casa</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="referencia">Referencia:</label>
+                     <input type="text" id="referencia" value="{{Session::has('direccionClientePotencial')? Session::get('direccionClientePotencial')->referencia:old('referencia')}}" class="form-control" placeholder="Ingrese la referencia de la casa" name="referencia">
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese referencia de la casa</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="provincia">Provincia:</label>
+                     <select name="provincia" id="provincia" class="form-control input-lg dynamic" data-dependent="ciudad">
+                        <option value="">Seleccionar Provincia</option>
+                        @foreach($provincia_list as $provincia)
+                        <option value="{{ $provincia->id_ubicaciones}}"  {{old('provincia')==$provincia->id_ubicaciones ? 'selected':''}}   >{{ $provincia->nombre }}</option>
+                        @endforeach
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="ciudad">Ciudad:</label>
+                     <select name="ciudad" id="ciudad" class="form-control input-lg"  >
+                        <option value="">Selecccionar ciudad</option>
+                     </select>
+                     <div class="valid-feedback">Bien.</div>
+                     <div class="invalid-feedback">Por favor ingrese Ciudad.</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="card">
+               <div class="card-header">Método de Pago</div>
+               <div class="card-body">
+                  <div id="accordion" role="tablist">
+                     @foreach($formasPago as $forma)
+                     <div class="card">
+                        <div class="card-header" role="tab" id="heading{{$forma->id}}">
+                           <div class="form-check">
+                              <label for="formaPago" class="form-check-label"></label>
+                              <input data-toggle="collapse"  href="#collapse{{$forma->id}}" aria-expanded="true" aria-controls="collapse{{$forma->id}}"  type="radio" class="form-check-input"
+                               value="{{$forma->id}}"
+                              name="formaPago" {{old('formaPago')==$forma->id ? 'checked':''}} ><h5 class="mb-0">{{$forma->nombre}}</h5>
+                           </div>
+                        </div>
+                        <div id="collapse{{$forma->id}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                           <div class="card-body">
+                             {{$forma->nombre}}
+                           </div>
+                        </div>
+                     </div>
+                     @endforeach
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                     <div class="card">
+                    <div class="card-header">Tramitar Pedido</div>
 
+                    <div class="card-body">
+                        <div class="row">
 
-<div class="container mt-5">
-	<div class="row mt-5">
-		<div class="col-sm">
-			<h1 class="mt-3">Detalles de Envío</h1>
-			<h4>Your Total: ${{ $total }}</h4>
-			@if(count($errors)>0)
-			<div class="alert alert-danger">
-				@foreach($errors->all() as $error)
-				<p>{{$error}}</p>
-				@endforeach
-			</div>
-			@endif
-		</div>
-	</div>
+                            <div class="col-6">
+                                <strong>Subtotal  producto</strong> </div>
+                            <div class="col-6 text-right">
+                                <strong>  {{$total}} USD </strong>
+                            </div>
 
-	<form id="checkout-form" class="was-validated"
-		action="{{route('checkout')}}" method="post">
-		<div class="row mt-5">
-			<div class="col-sm">
-				<h3>Datos Completos</h3>
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="nombreCompleto">Nombres y Apellidos:</label> <input
-								type="text"
-								value="{{Session::has('clientePotencial')?
-        Session::get('clientePotencial')->nombreCompleto:''}}"
-								id="nombreCompleto"
-								placeholder="Ingrese sus nombres y apellidos"
-								name="nombreCompleto" class="form-control" required>
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese sus nombres
-								completos.</div>
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="email">Email:</label> <input type="text"
-								value="{{Session::has('clientePotencial')?
-        Session::get('clientePotencial')->email:''}}"
-								id="email" name="email" placeholder="Ingrese su email"
-								class="form-control" required>
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor su email.</div>
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="celular">Celular:</label> <input type="text"
-								id="celular"
-								value="{{Session::has('clientePotencial')?
-        Session::get('clientePotencial')->celular:''}}"
-								class="form-control" placeholder="Ingrese su Celular"
-								name="celular" required>
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese su celular.</div>
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="cedula">Cedula:</label> <input type="text"
-								id="cedula"
-								value="{{Session::has('clientePotencial')?
-        Session::get('clientePotencial')->cedula:''}}"
-								class="form-control" placeholder="Ingrese su Cédula"
-								name="cedula" required>
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese su cédula.</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<h3>Direccion de Entrega</h3>
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="primaria">Calle Primaria:</label> <input type="text"
-								id="primaria" class="form-control" name="primaria" required
-								value="{{Session::has('direccionClientePotencial')?
-        Session::get('direccionClientePotencial')->callePrimaria:''}}"
-								placeholder="Ingrese la Calle Primaria">
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese calle primaria.</div>
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="secundaria">Calle Secundaria:</label> <input
-								type="text" id="secundaria" class="form-control"
-								name="secundaria" required
-								value="{{Session::has('direccionClientePotencial')?
-        Session::get('direccionClientePotencial')->calleSecundaria:''}}"
-								placeholder="Ingrese la Calle Secundaria">
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese calle secundaria.</div>
+                            <div class="col-6">
+                                <strong>   Envío </strong>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>  3,99 USD </strong>
+                            </div>
 
-						</div>
-					</div>
-					<div class="col-xs-12">
-						<div class="form-group">
-							<label for="referencia">Referencia:</label> <input type="text"
-								id="referencia" name="referencia" class="form-control" required
-								value="{{Session::has('direccionClientePotencial')?
-        Session::get('direccionClientePotencial')->referencia:''}}"
-								placeholder="Referencia de su Direccion">
-							<div class="valid-feedback">Bien.</div>
-							<div class="invalid-feedback">Por favor ingrese la referencia.</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                            <div class="col-12">
+                                <p> <span class="font-blue">Envío GRATIS a partir de 39,00 </span></p>
+                            </div>
 
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4>  <strong>     Total </strong></h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <h4>  <strong>     {{$total}} USD </strong></h4>
 
-			<div class="col-sm">
+                                    </div>
+                                </div>
+                                <p class="text-right text-tax">Todos los precios incluyen IVA</p>
+                            </div>
 
-				<h3>Forma de Pago y Envío</h3>
+                            <div class="col-12 margin-top-10 ">
 
+                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                    <h5>  <strong>       Pagar&nbsp;&nbsp;{{$total}} USD </strong></h5>
+                                </button>
 
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							@foreach($formasPago as $forma)
-							<th><div class="form-check">
-									<label for="formaPago" class="form-check-label"></label> <input
-										type="radio" class="form-check-input" value="{{$forma->id}}"
-										name="formaPago" required>{{$forma->nombre}}
-								</div></th> @endforeach
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							@foreach($formasPago as $forma)
-							<td>{{$forma->nombre}}</td> @endforeach
-						</tr>
-					</tbody>
-				</table>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+         </div>
+      </div>
+      {{ csrf_field() }}
+   </form>
 
-				<button type="submit" class="btn btn-success" id="validarCliente">
-					Guardar</button>
-			</div>
-		</div>
-		{{ csrf_field() }}
-	</form>
-
-
+   <div class="row mt-5">
+      <div class="col-sm">
+         @if(count($errors)>0)
+         <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+            <p>{{$error}}</p>
+            @endforeach
+         </div>
+         @endif
+      </div>
+   </div>
 
 </div>
 @endsection
+@section('scripts')
+<script>
 
+var cambiarEnFuncionProvincia= function () {
+console.log($('.dynamic').val());
+if ($('.dynamic').val() != '') {
+   var select = $('.dynamic').attr("id");
+   var value = $('.dynamic').val();
+   var dependent = $('.dynamic').data('dependent');
+   var _token = $('input[name="_token"]').val();
+   console.log(_token);
+   $.ajax({
+   url: "ciudades",
+   method: "POST",
+   data: { select: select, value: value, _token: _token, dependent: dependent },
+   success: function (result) {
+      console.log("lLEG RESUL");
+      $('#' + dependent).html(result);
+   }
+   })
+}
+};
+
+cambiarEnFuncionProvincia();
+
+$(document).ready( function () {
+$('.dynamic').change(cambiarEnFuncionProvincia);
+$('#provincia').change(function () {
+$('#ciudad').val('');
+});
+});
+
+
+
+</script>
+@endsection

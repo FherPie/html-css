@@ -1,11 +1,7 @@
 @charset "ISO-8859-1";
 
-.card img {
-	max-height: 150px;
-}
-
 .card .descripcion {
-	color: graytext;
+	color: greyText;
 }
 
 .price {
@@ -13,18 +9,189 @@
 	font-size: 16px;
 }
 
-.top-nav-collapse {
-	background-color: #24355C;
+/* Navbar */
+
+
+/* adds some margin below the link sets  */
+.navbar .dropdown-menu div[class*="col"] {
+  margin-bottom:1rem;
 }
 
-@media ( max-width : 768px) {
-	.navbar:not (.top-nav-collapse ) {
-		background-color: #24355C;
-	}
+.navbar .dropdown-menu {
+margin-top: 0px!important;
+ background-color:#0060c8!important;
 }
 
-@media ( min-width : 800px) and (max-width: 850px) {
-	.navbar:not (.top-nav-collapse ) {
-		background-color: #24355C;
-	}
+.clasePerfilMargenSuperior {
+  margin-top: 55px!important;
+ }
+
+ .palabraCarrito{
+  display: none;
+ }
+
+
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+ @media only screen and (min-width: 1200px) {
+
+  .botonBuscar{
+    display: inline !important;
+    background-color: #4285f4;
+    border: none;
+    color: white;
+  }
+
+  .palabraCarrito{
+    display: inline!important;;
+   }
+ }
+ 
+
+/* breakpoint and up - mega dropdown styles */
+@media screen and (min-width: 992px) {
+ 
+  .clasePerfilMargenSuperior {
+    margin-top: 85px!important;
+   }
+   .botonBuscar{
+     display: none;
+   }
+
+   .palabraCarrito{
+    display: none;
+   }
+
+ /* remove the padding from the navbar so the dropdown hover state is not broken */
+.navbar {
+ padding-top:21px;
+ padding-bottom:0px;
 }
+
+/* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+.navbar .nav-item {
+ padding:.5rem .5rem;
+ margin:0 .25rem;
+}
+
+/* makes the dropdown full width  */
+.navbar .dropdown {position:static;}
+
+.navbar .dropdown-menu {
+  margin-top: 21px !important;
+ width:100%;
+ left:0;
+ right:0;
+/*  height of nav-item  */
+ top:45px;
+}
+ 
+ /* shows the dropdown menu on hover */
+.navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+ display:block!important;
+}
+ 
+ .navbar .dropdown-menu {
+   border: 1px solid rgba(0,0,0,.15);
+   background-color: #fff;
+ }
+
+}
+
+
+/*Navbar
+ */
+
+
+/* carousel */
+.media-carousel 
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+}
+/* Previous button  */
+.media-carousel .carousel-control.left 
+{
+  left: -12px;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 30px
+}
+/* Next button  */
+.media-carousel .carousel-control.right 
+{
+  right: -12px !important;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 30px
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators 
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li 
+{
+  background: #c0c0c0;
+}
+.media-carousel .carousel-indicators .active 
+{
+  background: #333333;
+}
+.media-carousel img
+{
+  width: 250px;
+  height: 100px
+}
+/* End carousel */
+
+
+.slider {
+  width: 95%;
+  margin: 20px 20px;
+  margin-top: 5px;
+  margin-bottom: 75px;
+}
+
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  width: 80%;
+  /*height: 50%;*/
+  padding: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: 1;
+}
+
+.slick-active {
+  opacity: 1;
+}
+
+.slick-current {
+  opacity: 1;
+}
+

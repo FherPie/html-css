@@ -16,15 +16,18 @@ class CheckOutController extends Controller
 
     public function postCheckout(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
-            'nombreCompleto' => 'required|string|max:255',
+        $this->validate($request, [
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
             'email' => Session::has('clientePotencial') ? 'required|string|email|max:255' : 'required|string|email|max:255|unique:users',
             'celular' => 'required',
             'cedula' => 'required',
-            'primaria' => 'required',
+            'principal' => 'required',
             'secundaria' => 'required',
+            'numero' => 'required',
             'referencia' => 'required',
-            'formaPago' => 'required|filled'
+            'formaPago' => 'required|filled',
+            'ciudad' => 'required|filled'
         ]);
 
         $user = new User([
@@ -37,7 +40,8 @@ class CheckOutController extends Controller
         $usuario = Auth::user();
         $usuario->cedula = $request['cedula'];
         $usuario->celular = $request['celular'];
-        $usuario->nombreCompleto = $request['nombreCompleto'];
+        $usuario->nombres = $request['nombres'];
+        $usuario->apellidos = $request['apellidos'];
 
         $usuario->update();
 
@@ -45,9 +49,11 @@ class CheckOutController extends Controller
         // error_log($user->id);
 
         $direccion = new Direccion([
-            'callePrimaria' => $request['primaria'],
+            'callePrimaria' => $request['principal'],
             'calleSecundaria' => $request['secundaria'],
-            'referencia' => $request['referencia']
+            'referencia' => $request['referencia'],
+             'numero' => $request['numero'],
+              'ubicacion_id' => $request['ciudad']
         ]);
 
         $request->session()->put('direccionClientePotencial', $direccion);
@@ -59,7 +65,7 @@ class CheckOutController extends Controller
         $radio = $request->get('formaPago');
         $pedido = new Pedido();
         $pedido->user_id = $user->id;
-        $pedido->estadoPedido = "Nuevo";
+        $pedido->estado_pedido = 50;
         $pedido->formapago_id = $radio;
 
         if (Auth::user() !== null) {

@@ -18,7 +18,7 @@ class Pedido extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'estadoPedido', 'formapago_id'
+        'user_id', 'estado_pedido', 'formapago_id', 'total', 'id'
     ];
     
     /**
@@ -33,13 +33,20 @@ class Pedido extends Model
     public function user(){
         return $this->belongsTo('App/User');
     }
+
+    function withUsers() {
+        return $this->hasOne('App\User', 'id', 'user_id');
+     }
     
+     function withFormaPago() {
+        return $this->hasOne('App\FormaPago', 'id', 'formapago_id');
+     }
+
     /**
      *
      */
     public function detallesPedido() {
-        return $this->hasMany('App\DetallePedido');
+        return $this->hasMany('App\DetallePedido',"pedido_id");
     }
-    
     
 }
