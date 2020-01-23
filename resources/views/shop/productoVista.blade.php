@@ -13,17 +13,6 @@
                           <div id="imgtext"></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
-                          <li ><a><img  class="active" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%"
-                                onclick="myFunction(this);">
-                          </a></li>
-                          <li><a >   <img src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                          <li><a > <img src="https://www.w3schools.com/howto/img_mountains.jpg" alt="Mountains" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                          <li><a > <img src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                            <li><a > <img src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%"
-                                onclick="myFunction(this);"></a></li>
 					    	@foreach($producto->detallesArchivo as $detalle)
 								<li><a > <img src="storage/catalogo/producto/{{$detalle->nombre}}" alt="{{$detalle->nombre}}" style="width:100%"
                                 onclick="myFunction(this);"></a></li>
@@ -59,11 +48,11 @@
                             <span class="color green"></span>
                             <span class="color blue"></span>
                         </h5> -->
-						<h4 class="price">Mas Descripción Adicional: 
+						<h4 class="price">Mas Descripción Adicional:</h4>
 						<p class="product-description">
-						{{$producto->informacion_adicional}}
+					   {!!$producto->informacion_adicional!!}
 						</p>
-						</h4>
+						
                         <div class="action">
 						<a href="{{route('producto.addToCart', ['id' => $producto->id_producto])}}" class=" add-to-cart btn btn-default pull-right">Agregar al carrito</a><!-- 
                             <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
