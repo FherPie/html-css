@@ -17,6 +17,8 @@ Route::get('nosotros', "ProductoController@nosotros");
 
 Route::get('afiliados', "ProductoController@afiliados");
 
+Route::get('/listadoMarcas', "listadoMArcasController@index");
+
 Route::get('/catalogo', "ProductoController@catalogo")->name('producto.catalogo');
 
 
