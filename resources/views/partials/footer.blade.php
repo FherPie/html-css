@@ -41,6 +41,9 @@
                <p>
                 <a href="#!">Ferguz</a>
             </p>
+            <p>
+                <a href="{{url('listadoMarcas')}}">Todas las marcas</a>
+            </p>
         </div>
         <!--/.Second column-->
 
