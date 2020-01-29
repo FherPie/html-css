@@ -199,7 +199,7 @@ class ProductoController extends Controller
         $queries=[];
 
         $columns=[
-          'nombre', 'codigo', 'descripcion', 'nombre_comercial', 'id_sub_categoria_producto'
+          'nombre', 'codigo', 'descripcion', 'nombre_comercial', 'id_sub_categoria_producto', 'id_marca'
         ];
  
         foreach ($columns as $column) {

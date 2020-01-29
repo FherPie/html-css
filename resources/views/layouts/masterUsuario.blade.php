@@ -65,8 +65,9 @@
        <script type="text/javascript"  src="{{ URL::to('src/slick/slick.min.js')}}"></script>
        <script type="text/javascript"  src="{{ URL::to('js/pais.js')}}"></script>
        <script type="text/javascript"  src="{{ URL::to('js/megamenu.js')}}"></script>
-       <script>
-  </script>
+       <script type="text/javascript"  src="{{ URL::to('js/estilos.js')}}"></script>
+
+
 @yield('scripts')
 </body>
 </html>

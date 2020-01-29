@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>@yield('title')</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Carrois+Gothic&display=swap" rel="stylesheet"> 
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -15,6 +16,7 @@
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick-theme.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/css/app.css')}}"/>
+<link rel="stylesheet" href="{{url::to('css/estilos.css')}}">
  @yield('styles')
 </head>
 <body>
@@ -48,6 +50,7 @@
       interval: 3000,
     })
   </script>
+    <script type="text/javascript"  src="{{ URL::to('js/estilos.js')}}"></script>
 @yield('scripts')
 </body>
 </html>
