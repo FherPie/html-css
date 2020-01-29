@@ -19,7 +19,7 @@ Ingresar al Sistema
   @foreach($objeto_marcas as $marcas)
 
 
-  <a href="" class="list-group-item list-group-item-action ">{{$marcas->nombre}}</a>
+  <a href="{{route('producto.catalogo',['id_marca' => $marcas->id_marca])}}" class="list-group-item list-group-item-action ">{{$marcas->nombre}}</a>
 
 @endforeach
 
