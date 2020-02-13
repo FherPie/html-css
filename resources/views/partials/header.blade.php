@@ -2,7 +2,7 @@
   <div class="col-sm-4">.col-sm-4</div>
   <div class="col-sm-8">.col-sm-8</div>
 </div> -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar" >
 <a class="navbar-brand" href="{{route('producto.index')}}">EMPRESA</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
     <div class="row">
 
         @foreach($chunk as $ssubcategoria)
-		 <div class="col-md-3 float-left"  >
+		 <div class="col-md-3 float-left">
 		      <ul class="nav flex-column">
 
                 <li class="nav-item">
@@ -71,6 +71,11 @@
 	  
 
 
+
+
+	  
+
+
 	</ul>
 					<!-- FIN  Categorias  -->
 	<!-- CARRO DE COMPRAS  -->
@@ -88,10 +93,10 @@
 				</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user"></i>
+					aria-haspopup="true" aria-expanded="false" > <i class="fas fa-user"></i>
 						Cuenta de Usuario
 				</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<div class="dropdown-menu bg-primary" data-aos="zoom-in-right" aria-labelledby="navbarDropdown">
 						@if(Auth::check()) <a class="dropdown-item"
 							href="{{route('users.profile')}}">Perfil Usuario</a>
 						<div class="dropdown-divider"></div>
@@ -130,7 +135,8 @@ class="nav-link"><img src="{{asset('./img/wthasp.jpg')}}" with='25' height='25'/
 					<!--  FIN Social Icon  -->
      <form class="form-inline my-2 my-lg-0" action="/catalogo" method="get">
       <input class="form-control mr-sm-2" type="search"   name="search"  placeholder="Buscar Productos" aria-label="Buscar Productos">
-      <button class=" fas fa-search botonBuscar" type="submit"></button>
+	  
+      <button class=" btn btn-outline-success" type="submit">Buscar</button>
     </form> 
   </div>
 </nav>

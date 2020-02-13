@@ -141,7 +141,7 @@ Tienda
 
 <!-- {{$productosPaginados->appends(Request::except('page'))->links("pagination::bootstrap-4")}} -->
 
-<section id="masbuscados">
+<section id="masbuscados" class="single-rpost d-sm-flex align-items-center aos-init aos-animate" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
 
 <div class="container-fluid">
              <div class="row">
@@ -167,7 +167,7 @@ Tienda
          </div>
 </section>
 
-<section id="promociones">
+<section id="promociones" class="single-rpost d-sm-flex align-items-center aos-init aos-animate" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
 
 <div class="container-fluid">
              <div class="row">

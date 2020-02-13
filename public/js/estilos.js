@@ -15,3 +15,5 @@ $('body').css({
 
 
 })
+
+AOS.init();

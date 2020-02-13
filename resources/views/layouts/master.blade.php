@@ -8,15 +8,19 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link href="{{URL::to('css/aos.css')}}" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css')}}"/>
+  
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ URL::to('css/mdb.min.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick-theme.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/css/app.css')}}"/>
-<link rel="stylesheet" href="{{url::to('css/estilos.css')}}">
+<link rel="stylesheet" href="{{URL::to('css/estilos.css')}}">
+
+
  @yield('styles')
 </head>
 <body>
@@ -36,8 +40,11 @@
 <!--     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 @include('partials.footer')
      <script type="text/javascript"  src="{{ URL::to('js/jquery-2.2.0.min.js')}}"></script>
+     <script src="{{url::to('js/aos.js')}}"></script>
      <script type="text/javascript"  src="{{ URL::to('js/popper.min.js')}}"></script>
      <script type="text/javascript"  src="{{ URL::to('js/bootstrap.min.js')}}"></script>
+   
+    
      <script type="text/javascript"  src="{{ URL::to('js/mdb.min.js')}}"></script>
        <script type="text/javascript"  src="{{ URL::to('js/scrolling-nav.js')}}"></script>
        <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
@@ -46,11 +53,13 @@
        <script type="text/javascript"  src="{{ URL::to('js/megamenu.js')}}"></script>
        <script>
 
+
     $('.carousel').carousel({
       interval: 3000,
     })
   </script>
     <script type="text/javascript"  src="{{ URL::to('js/estilos.js')}}"></script>
+  
 @yield('scripts')
 </body>
 </html>
