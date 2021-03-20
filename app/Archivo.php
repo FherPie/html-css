@@ -18,7 +18,7 @@ class Archivo extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre',  'id_producto', 'url',
+        'nombre',  'id_producto', 'url', 'principal'
     ];
     
     /**

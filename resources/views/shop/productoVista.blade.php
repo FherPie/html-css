@@ -8,8 +8,21 @@
             <div class="container-fliud">
                 <div class="wrapper row">
                     <div class="preview col-md-6">
-                        <div class=" tab-content">
-                          <div class="tab-pane active" ><img id="pic-1" src="https://www.w3schools.com/howto/img_nature.jpg" /></div>
+                         <div class=" tab-content">
+
+
+                          <div class="tab-pane active" >
+                   
+                            @foreach($producto->detallesArchivo as $detalle)
+                            @if($loop->first)
+                          
+                            <img id="pic-1"  src="storage/catalogo/producto/{{$detalle->nombre}}" alt="{{$detalle->nombre}}"  />
+                                @endif
+                             @endforeach
+                        </div>
+
+
+                          
                           <div id="imgtext"></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
@@ -66,5 +79,5 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript"  src="{{ URL::to('js/zommPlus.js')}}"></script>
+<!--script type="text/javascript"  src="{{ URL::to('js/zommPlus.js')}}"></script-->
 @endsection

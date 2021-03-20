@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick-theme.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/css/app.css')}}"/>
+<script src="https://www.paypal.com/sdk/js?client-id=Abb7r6AIWPxDcVak86PdAm1T8DPX5zkvu_vI8xvrLx7dUk8xbNretFjOmExxb160C5XlXiJ0HzLb59Tj"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID</script>
+
  @yield('styles')
 </head>
 <body>
@@ -22,7 +24,7 @@
 <!-- <aside class="aside"> -->
 
 <!-- </aside> -->
-<div class="container-fuid mt-3">
+<div class="container-fuid mt-5rm">
     @yield('content')
 </div>
 <!-- <script -->

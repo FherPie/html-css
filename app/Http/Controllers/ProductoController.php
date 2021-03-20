@@ -208,8 +208,6 @@ class ProductoController extends Controller
                 $queries[$column]=request($column);
             }
         }
-
-
         
         if(request()->has('search')){
             $search= request('search');

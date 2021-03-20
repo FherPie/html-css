@@ -123,9 +123,24 @@
                            </div>
                         </div>
                         <div id="collapse{{$forma->id}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+
+
+                         
+
+                           @if($forma->nombre==='Pago con PAYPAL')
+                           <div class="card-body">
+                            
+                             <div id="paypal-button-container">
+                             
+                             </div>
+                           </div>
+                           @else
                            <div class="card-body">
                              {{$forma->nombre}}
                            </div>
+
+                           @endif
+
                         </div>
                      </div>
                      @endforeach
@@ -143,7 +158,7 @@
                             <div class="col-6">
                                 <strong>Subtotal  producto</strong> </div>
                             <div class="col-6 text-right">
-                                <strong>  {{$total}} USD </strong>
+                                <strong id="total">  {{$total}}</strong>   USD 
                             </div>
 
                             <div class="col-6">
@@ -202,6 +217,26 @@
 @endsection
 @section('scripts')
 <script>
+
+//dd the checkout buttons, set up the order and approve the order
+  
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '20.99'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name);
+          });
+        }
+      }).render('#paypal-button-container'); // Display payment options on your web page
+      
 
 var cambiarEnFuncionProvincia= function () {
 console.log($('.dynamic').val());

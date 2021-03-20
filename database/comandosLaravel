@@ -1,0 +1,4 @@
+php artisan make:seeder FormaPagoSeeder ---Para realizar el Seeder si  no existe
+
+
+php artisan db:seed --class=FormaPagoSeeder    ---Para correr con Seeder   

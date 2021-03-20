@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\FormaPago;
 use App\Carro;
 
@@ -81,12 +82,20 @@ class RegisterController extends Controller
     public function postSignup(Request $request){
         
         $this->validate($request, [
+            
             'nombre'=> 'required|string|max:255',
             'email'=> 'required|string|email|max:255|unique:users',
             'password'=> 'required|string|min:6|confirmed'
         ]);
         
+        $current_id = DB::table('users')->max('id');
+
+        error_log('$current_id ');
+
+        error_log($current_id );
+
         $user= new User([
+            'id'=>$current_id + 1,
             'name' => $request['nombre'],
             'email' => $request['email'],
             'password' => bcrypt($request['password'])

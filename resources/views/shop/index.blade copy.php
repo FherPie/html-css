@@ -4,7 +4,6 @@
 Tienda 
 @endsection
   <header>
-
 <!--Carousel Wrapper-->
 <div id="carousel-example-2" class="carousel slide carousel-fade mt-5" data-ride="carousel">
   <!--Indicators-->
