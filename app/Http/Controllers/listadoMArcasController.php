@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\listadoMarcas;
+use App\SubCategoriaProducto;
+use App\Producto;
+
+
+
+
 use Auth;
 
 
@@ -17,9 +23,9 @@ class listadoMArcasController extends Controller
     }
     public
     function index(){
-        $marcas =DB::table('marca as l')
-        ->select('l.nombre')
-        ->orderBy('nombre', 'asc')
+        $marcas =DB::table('marca as ma')
+        ->select('ma.nombre', 'ma.id_marca')
+        ->orderBy('ma.nombre', 'asc')
         ->get();
     
         return view('marcas.listadoMarcas', ["objeto_marcas"=>$marcas]);

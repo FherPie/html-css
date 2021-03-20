@@ -11,7 +11,8 @@
 <div class="container mt-5 mb-4 text-center text-md-left" id="footer">
     <div class="row mt-3">
         <!--First column-->
-        <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+       
+        <div class="col-md-3 col-lg-4 col-xl-3 mb-4 single-widget contact-widget aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
             <h6 class="text-uppercase font-weight-bold">
                 <strong>Empresa tu tienda de mascotas</strong>
             </h6>
@@ -21,7 +22,7 @@
         <!--/.First column-->
 
         <!--Second column-->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 single-widget contact-widget aos-init aos-animate" data-aos="fade-down" data-aos-delay="0">
             <h6 class="text-uppercase font-weight-bold">
                 <strong>Marcas</strong>
             </h6>
@@ -48,7 +49,7 @@
         <!--/.Second column-->
 
         <!--Third column-->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto single-widget contact-widget aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
             <h6 class="text-uppercase font-weight-bold">
                 <strong>Enlaces más usados</strong>
             </h6>
@@ -72,7 +73,8 @@
         <!--/.Third column-->
 
         <!--Fourth column-->
-        <div class="col-md-4 col-lg-3 col-xl-3">
+  
+        <div class="col-md-4 col-lg-3 col-xl-3 single-pricing text-center aos-init aos-animate" data-aos="fade-down" data-aos-delay="0" data-aos-duration="0">
             <h6 class="text-uppercase font-weight-bold">
                 <strong>Contacto</strong>
             </h6>
@@ -102,8 +104,7 @@ class="nav-link"><img src="{{asset('./img/wthasp.jpg')}}" with='50' height='50'/
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
-<!--       <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a> -->
-    </div>
+
     <!-- Copyright -->
 
   </footer>
