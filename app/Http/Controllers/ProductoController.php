@@ -25,7 +25,7 @@ class ProductoController extends Controller
 
 //             $productos = DB::table('producto')->where('id_sub_categoria_producto', '=', $request->input('id'))->orderBy('nombre', 'asc')->paginate(5);
            
-        $queryUser->whereBetween('id_producto', [1, 8]);
+        //$queryUser->whereBetween('id_producto', [1, 8]);
         
 
         //         $subcategorias = DB::table('categoria_producto')->select('nombre', 'id_categoria_producto')->get();
@@ -47,7 +47,7 @@ class ProductoController extends Controller
 
         $queryUser = Producto::query();
 
-        $queryUser->whereBetween('id_producto', [8, 16]);
+        // queryUser->whereBetween('id_producto', [8, 16]);
 
         $productosPromociones = $queryUser->paginate(8);
 
@@ -64,10 +64,10 @@ class ProductoController extends Controller
             $producto= Producto::find($request->input('id'));
         }
         $producto->detallesArchivos=$producto->detallesArchivo()->get();
-        
-        
-       
-        return view('shop/productoVista', ['producto'=>$producto]);
+
+        $principal=$producto->detallesArchivo()->where('principal', '=', true)->get();
+        error_log($principal->first());
+        return view('shop/productoVista', ['producto'=>$producto,'principal'=>$principal]);
     }
       
     public function getAddToCart(Request $request, $id_producto){
@@ -133,7 +133,7 @@ class ProductoController extends Controller
         }
         $odlCart=Session::get('cart');
         $cart=new Carro($odlCart); 
-        return view('shop.shopping-cart', ['productos'=>$cart->items, 'precioTotal'=>$cart->totalPrice]);
+        return view('shop.shopping-cart', ['productos'=>$cart->items, 'precioTotal'=>$cart->totalPrice, 'precioConImpuesto'=>$cart->totalPrice*1.12, 'impuestos'=>$cart->totalPrice*0.12]);
     }
     
     public function getCheckout(Request $request){

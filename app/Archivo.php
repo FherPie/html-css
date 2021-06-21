@@ -35,4 +35,11 @@ class Archivo extends Model
     public function producto() {
         return $this->belongsTo('App\Producto');
     }
+
+    public function __toString() {
+        if(is_null($this->Archivo)) {
+            return 'NULL';
+        }
+        return $this->Archivo;
+    }
 }

@@ -31,18 +31,18 @@ Items agregados
           <tr>
             <td>
           <figure class="media">
-            <div class="img-wrap"><img src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
-               class="img-thumbnail img-sm"></div>
+            <!-- <div class="img-wrap"><img src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
+               class="img-thumbnail img-sm"></div> -->
             <figcaption class="media-body">
               <h6 class="title text-truncate">{{$producto['item']['nombre']}}</h6>
-              <dl class="param param-inline small">
+              <!-- <dl class="param param-inline small">
                 <dt>Size: </dt>
                 <dd>XXL</dd>
-              </dl>
-              <dl class="param param-inline small">
+              </dl> -->
+              <!-- <dl class="param param-inline small">
                 <dt>Color: </dt>
                 <dd>Orange color</dd>
-              </dl>
+              </dl> -->
             </figcaption>
           </figure> 
             </td>
@@ -86,11 +86,25 @@ Items agregados
               </td>
               <td> 
                   <div class="price-wrap"> 
-                    <var class="price">USD 145</var> 
+                    <var class="price">USD {{number_format($precioTotal, 2, '.', ',')}}</var> 
                   </div> <!-- price-wrap .// -->
                 </td>
             </tr>
-			<tr>
+            <tr>
+              <td colspan="4" class="text-right">
+                <div class="price-wrap"  > 
+                  <var class="price">Impuestos</var> 
+                  <!-- <small class="text-muted">(USD15 each)</small>  -->
+                </div> <!-- price-wrap .// -->
+              </td>
+              <td> 
+                  <div class="price-wrap"> 
+                    <var class="price">USD {{number_format($impuestos, 2, '.', ',')}}</var> 
+                  </div> <!-- price-wrap .// -->
+                </td>
+            </tr>
+
+		      	<tr>
                   <td colspan="4" class="text-right">
                     <div class="price-wrap"  > 
                       <var class="price">TOTAL</var> 
@@ -99,7 +113,7 @@ Items agregados
                   </td>
                   <td> 
                       <div class="price-wrap"> 
-                        <var class="price">USD {{number_format($precioTotal, 2, '.', ',')}}</var> 
+                        <var class="price">USD {{number_format($precioConImpuesto, 2, '.', ',')}}</var> 
                       </div> <!-- price-wrap .// -->
                   </td>
        

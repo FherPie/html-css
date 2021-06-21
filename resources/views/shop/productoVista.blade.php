@@ -9,20 +9,17 @@
                 <div class="wrapper row">
                     <div class="preview col-md-6">
                          <div class=" tab-content">
-
-
                           <div class="tab-pane active" >
-                   
-                            @foreach($producto->detallesArchivo as $detalle)
+                          @foreach($principal as $detalle)
                             @if($loop->first)
-                          
                             <img id="pic-1"  src="storage/catalogo/producto/{{$detalle->nombre}}" alt="{{$detalle->nombre}}"  />
                                 @endif
                              @endforeach
                         </div>
+              
 
+                        <!-- --<img id="pic-1"  src="storage/catalogo/producto/{{$principal->first->nombre}}" alt="{{$principal->first->nombre}}"  /> -->
 
-                          
                           <div id="imgtext"></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">

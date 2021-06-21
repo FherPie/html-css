@@ -3,7 +3,7 @@
   <div class="col-sm-8">.col-sm-8</div>
 </div> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar" >
-<a class="navbar-brand" href="{{route('producto.index')}}">EMPRESA</a>
+<a class="navbar-brand" href="{{route('producto.index')}}">Kreafastec</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,7 +18,7 @@
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		{{$subcategoria->nombre}}CCC
+		{{$subcategoria->nombre}}
         </a>
         <div class="dropdown-menu  bg-primary" aria-labelledby="navbarDropdown">
 
@@ -35,7 +35,7 @@
 		      <ul class="nav flex-column">
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('producto.catalogo',['id_sub_categoria_producto' => $ssubcategoria->id_subcategoria_producto])}}">{{$ssubcategoria->nombre}}XXXX</a>
+                  <a class="nav-link" href="{{route('producto.catalogo',['id_sub_categoria_producto' => $ssubcategoria->id_subcategoria_producto])}}">{{$ssubcategoria->nombre}}</a>
                 </li>
 			
               </ul>

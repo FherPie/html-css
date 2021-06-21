@@ -155,7 +155,7 @@ Tienda
                              alt="Card image cap">
                          <div class="card-body">
                          <!-- <h5 class="card-title">Card title</h5> -->
-                         <h5 class="card-title">  <a   target="_blank" href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
+                         <h5 class="card-title">  <a  href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
 
                              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                          </div>
@@ -183,7 +183,7 @@ Tienda
                              alt="Card image cap">
                          <div class="card-body">
                              <!-- <h5 class="card-title">Card title</h5> -->
-                            <h5 class="card-title">  <a   target="_blank" href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
+                            <h5 class="card-title">  <a   href="{{route('producto.vista', ['id' => $product->id_producto])}}" class="card-title">{{$product->nombre}}</a></h5>
                              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                          </div>
                      </div>
