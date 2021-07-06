@@ -14,12 +14,13 @@
   
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
+  {{-- <link rel="stylesheet" href="/css/app.css"> --}}
 <link rel="stylesheet" href="{{ URL::to('css/mdb.min.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick-theme.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/css/app.css')}}"/>
 <script src="https://www.paypal.com/sdk/js?client-id=Abb7r6AIWPxDcVak86PdAm1T8DPX5zkvu_vI8xvrLx7dUk8xbNretFjOmExxb160C5XlXiJ0HzLb59Tj"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID</script>
-<link rel="stylesheet" href="{{URL::to('css/estilos.css')}}">
+ <link rel="stylesheet" href="{{URL::to('css/estilos.css')}}">
 
 
  @yield('styles')
@@ -29,7 +30,7 @@
 <!-- <aside class="aside"> -->
 
 <!-- </aside> -->
-<div class="container-fuid mt-5rm">
+<div class="container-fluid mt-5rm">
     @yield('content')
 </div>
 <!-- <script -->
@@ -47,6 +48,7 @@
    
     
      <script type="text/javascript"  src="{{ URL::to('js/mdb.min.js')}}"></script>
+  
        <script type="text/javascript"  src="{{ URL::to('js/scrolling-nav.js')}}"></script>
        <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
        <script type="text/javascript"  src="{{ URL::to('src/slick/slick.min.js')}}"></script>

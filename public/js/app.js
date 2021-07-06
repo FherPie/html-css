@@ -993,6 +993,8 @@ var app = new Vue({
   el: '#app'
 });
 
+alert('hpola');
+
 /***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {

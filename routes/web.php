@@ -13,6 +13,7 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+
 Route::get('nosotros', "ProductoController@nosotros");
 
 Route::get('afiliados', "ProductoController@afiliados");
@@ -21,6 +22,7 @@ Route::get('/listadoMarcas', "listadoMArcasController@index");
 
 Route::get('/catalogo', "ProductoController@catalogo")->name('producto.catalogo');
 
+//peticiones para formularios con post
 
 Route::post('ciudades', 'UbicacionesController@ciudades')->name('dynamicdependent.ciudades');
 
@@ -46,8 +48,17 @@ Route::get('/vistaProducto', [
 
 Route::get('/', [
     'uses' => 'ProductoController@getIndex',
+    
     'as' => 'producto.index'
 ]);
+Route::get('/acerca', 'Acerca@index')->name('acerca');
+
+
+//Route::get('/', function(){
+  //  $nombre="Dario";
+// compact devuelve variables
+   // return view('acerca', compact('nombre'));
+//})->name('acerca');
 
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductoController@getAddToCart',
@@ -65,7 +76,7 @@ Route::get('/add-to-cart-checkout/{id}', [
 ]);
 
 
-
+// con parametros
 Route::get('/reduce-to-cart-checkout/{id}', [
     'uses' => 'ProductoController@getReduceCartCheckOut',
     'as' => 'producto.reduceToCartCheckOut'

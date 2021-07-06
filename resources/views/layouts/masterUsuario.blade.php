@@ -36,7 +36,7 @@
               <a href="{{route('users.orders')}}" class="list-group-item list-group-item-action active">Pedidos</a>
               <a href="{{route('users.profile')}}" class="list-group-item list-group-item-action">Perfil</a>
               <a href="" class="list-group-item list-group-item-action">Direccion</a>
-              <a href="#" class="list-group-item list-group-item-action">Salir de Sesion</a>
+              <a href="{{ route('users.logout') }}" class="list-group-item list-group-item-action">Salir de Sesion</a>
             </div>
 		</div>
 <div class="col-md-9">

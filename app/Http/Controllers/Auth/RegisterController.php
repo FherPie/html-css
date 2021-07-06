@@ -57,6 +57,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'cedula' => ' required|numeric',
+            'apellidos' => 'required|string|max:256'
         ]);
     }
 
@@ -71,6 +73,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'cedula'=>$data['cedula'],
+            'apellidos' => $data['apellidos'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -85,7 +89,9 @@ class RegisterController extends Controller
             
             'nombre'=> 'required|string|max:255',
             'email'=> 'required|string|email|max:255|unique:users',
-            'password'=> 'required|string|min:6|confirmed'
+            'password'=> 'required|string|min:6|confirmed',
+            'cedula' => ' required|numeric',
+            'apellidos' => 'required|string|max:256'
         ]);
         
         $current_id = DB::table('users')->max('id');
@@ -98,6 +104,8 @@ class RegisterController extends Controller
             'id'=>$current_id + 1,
             'name' => $request['nombre'],
             'email' => $request['email'],
+            'cedula' => $request['cedula'],
+            'apellidos' => $request['apellidos'],
             'password' => bcrypt($request['password'])
         ]);
 

@@ -8,6 +8,7 @@ use App\User;
 use App\Direccion;
 use App\Pedido;
 use App\EstadoPedido;
+use App\Ubicaciones;
 use Illuminate\Support\Facades\Auth;
 use App\DetallePedido;
 
@@ -18,32 +19,39 @@ class CheckOutController extends Controller
     {
         $this->validate($request, [
             'nombres' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'apellidos' =>Session::has('clientePotencial') ? 'required|string|max:255':'required|string|max:255',
             'email' => Session::has('clientePotencial') ? 'required|string|email|max:255' : 'required|string|email|max:255|unique:users',
             'celular' => 'required',
-            'cedula' => 'required',
+            'cedula' => Session::has('clientePotencial')? 'required': 'required|unique:users' ,
             'principal' => 'required',
             'secundaria' => 'required',
             'numero' => 'required',
             'referencia' => 'required',
             'formaPago' => 'required|filled',
             'ciudad' => 'required|filled'
+        ],[
+            'nombres.required'=>' Necesito tu nombre porfavor'
         ]);
 
         $user = new User([
             'nombreCompleto' => $request['nombreCompleto'],
+            'name'=> $request['nombres'],
+            'nombres' => $request['nombres'],
+            'apellidos' => $request['apellidos'],
             'email' => $request['email'],
             'celular' => $request['celular'],
-            'cedula' => $request['cedula']
+            'cedula' => $request['cedula'],
+           
         ]);
 
         $usuario = Auth::user();
         $usuario->cedula = $request['cedula'];
         $usuario->celular = $request['celular'];
-        $usuario->nombres = $request['nombres'];
+        $usuario->name = $request['nombres'];
         $usuario->apellidos = $request['apellidos'];
 
-        $usuario->update();
+      
 
         $request->session()->put('clientePotencial', $usuario);
         // error_log($user->id);
@@ -53,7 +61,7 @@ class CheckOutController extends Controller
             'calleSecundaria' => $request['secundaria'],
             'referencia' => $request['referencia'],
              'numero' => $request['numero'],
-              'ubicacion_id' => $request['ciudad']
+             'ubicacion_id' => $request['ciudad']
         ]);
 
         $request->session()->put('direccionClientePotencial', $direccion);
