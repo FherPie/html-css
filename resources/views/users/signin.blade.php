@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="container">
+        
         <div class="row justify-content-md-center" >
             <div class="col col-md-auto shadow card border-light mb-3 mt-3">
                 <h1 class="mt-3">Bienvenido de Vuelta</h1>

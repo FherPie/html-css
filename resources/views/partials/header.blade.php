@@ -1,7 +1,4 @@
-<!-- <div class="row">
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-8">.col-sm-8</div>
-</div> -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar">
     <a class="navbar-brand" href="{{ route('producto.index') }}">Kreafastec</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -133,11 +130,14 @@
             </li>
         </ul>
         <!--  FIN Social Icon  -->
-        <form class="form-inline my-2 my-lg-0" action="/catalogo" method="get">
-            <input class="form-control mr-sm-1" type="search" name="search" placeholder="Buscar Productos"
+        <form class=" navbar-form " action="/catalogo" method="get" role="search">
+            <div class=" form-group">
+            <input class="form-control" type="search" name="search" placeholder="Buscar Productos"
                 aria-label="Buscar Productos">
-
+            </div>
+           
             <button class=" btn  btn-outline-deep-orange" type="submit">Buscar</button>
+
         </form>
     </div>
 </nav>

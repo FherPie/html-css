@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css')}}"/>
+  <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css.map')}}"/>
+  
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ URL::to('css/mdb.min.css')}}"/>
@@ -59,6 +61,10 @@
      <script type="text/javascript"  src="{{ URL::to('js/jquery-2.2.0.min.js')}}"></script>
      <script type="text/javascript"  src="{{ URL::to('js/popper.min.js')}}"></script>
      <script type="text/javascript"  src="{{ URL::to('js/bootstrap.min.js')}}"></script>
+
+ <script type="text/javascript"  src="{{ URL::to('js/bootstrap.min.js.map')}}"></script>
+     
+     
      <script type="text/javascript"  src="{{ URL::to('js/mdb.min.js')}}"></script>
        <script type="text/javascript"  src="{{ URL::to('js/scrolling-nav.js')}}"></script>
        <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>

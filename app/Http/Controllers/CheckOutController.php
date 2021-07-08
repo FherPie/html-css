@@ -11,60 +11,68 @@ use App\EstadoPedido;
 use App\Ubicaciones;
 use Illuminate\Support\Facades\Auth;
 use App\DetallePedido;
+use Illuminate\Support\Facades\DB;
 
 class CheckOutController extends Controller
+
 {
+
+
+ 
 
     public function postCheckout(Request $request)
     {
+        error_log('aqui eta el log**************');
         $this->validate($request, [
-            'nombres' => 'required|string|max:255',
-            'name' => 'required|string|max:255',
-            'apellidos' =>Session::has('clientePotencial') ? 'required|string|max:255':'required|string|max:255',
-            'email' => Session::has('clientePotencial') ? 'required|string|email|max:255' : 'required|string|email|max:255|unique:users',
-            'celular' => 'required',
-            'cedula' => Session::has('clientePotencial')? 'required': 'required|unique:users' ,
-            'principal' => 'required',
-            'secundaria' => 'required',
-            'numero' => 'required',
-            'referencia' => 'required',
-            'formaPago' => 'required|filled',
-            'ciudad' => 'required|filled'
+          // 'nombres' => 'required|string|max:255',
+           'name' => Session::has('clientePotencial') ? 'required|string|max:255': 'required|string|max:255'
+         // 'apellidos' =>Session::has('clientePotencial') ? 'required|string|max:255':'required|string|max:255',
+         //'email' => Session::has('clientePotencial') ? 'required|string|email|max:255' : 'required|string|email|max:255|unique:users',
+          //  'celular' => 'required',
+           // 'cedula' => Session::has('clientePotencial')? 'required': 'required|unique:users' ,
+          //  'principal' => 'required',
+            //'secundaria' => 'required',
+            //'numero' => 'required',
+            //'referencia' => 'required',
+            //'formaPago' => 'required|filled',
+            //'ciudad' => 'required|filled'
         ],[
-            'nombres.required'=>' Necesito tu nombre porfavor'
+            //'nombres.required'=>' Necesito tu nombre porfavor'
         ]);
-
+       
         $user = new User([
-            'nombreCompleto' => $request['nombreCompleto'],
+           // 'nombreCompleto' => $request['nombreCompleto'],
             'name'=> $request['nombres'],
-            'nombres' => $request['nombres'],
-            'apellidos' => $request['apellidos'],
-            'email' => $request['email'],
-            'celular' => $request['celular'],
-            'cedula' => $request['cedula'],
+          // 'nombres' => $request['nombres'],
+          //  'apellidos' => $request['apellidos'],
+          //  'email' => $request['email'],
+          //  'celular' => $request['celular'],
+          ///  'cedula' => $request['cedula'],
            
         ]);
 
         $usuario = Auth::user();
-        $usuario->cedula = $request['cedula'];
-        $usuario->celular = $request['celular'];
-        $usuario->name = $request['nombres'];
-        $usuario->apellidos = $request['apellidos'];
+     //   $usuario->cedula = $request['cedula'];
+      //  $usuario->celular = $request['celular'];
+       $usuario->name = $request['nombres'];
+
+    //    $usuario->apellidos = $request['apellidos'];
 
       
 
         $request->session()->put('clientePotencial', $usuario);
-        // error_log($user->id);
+      
+        error_log('aqui eta el log2**************');
 
-        $direccion = new Direccion([
-            'callePrimaria' => $request['principal'],
-            'calleSecundaria' => $request['secundaria'],
-            'referencia' => $request['referencia'],
-             'numero' => $request['numero'],
-             'ubicacion_id' => $request['ciudad']
-        ]);
+        // $direccion = new Direccion([
+        //     'callePrimaria' => $request['principal'],
+        //     'calleSecundaria' => $request['secundaria'],
+        //     'referencia' => $request['referencia'],
+        //      'numero' => $request['numero'],
+        //    //  'ubicacion_id' => $request['ciudad']
+        // ]);
 
-        $request->session()->put('direccionClientePotencial', $direccion);
+        // $request->session()->put('direccionClientePotencial', $direccion);
 
         $request->session()->put('formaPago', $request['formaPago']);
 
@@ -73,6 +81,7 @@ class CheckOutController extends Controller
         $radio = $request->get('formaPago');
         $pedido = new Pedido();
         $pedido->user_id = $user->id;
+        
         $pedido->estado_pedido = 50;
         $pedido->formapago_id = $radio;
 
@@ -82,7 +91,7 @@ class CheckOutController extends Controller
                 $cart = Session::get('cart');
                 $pedido->total = $cart->totalPrice;
                 $pedido = Auth::user()->pedidos()->save($pedido);
-                Auth::user()->direcciones()->save($direccion);
+               // Auth::user()->direcciones()->save($direccion);
                 foreach ($cart->items as $value) {
                     $detallePedido = new DetallePedido();
                     $detallePedido->pedido_id = $pedido->id;
@@ -95,10 +104,10 @@ class CheckOutController extends Controller
         }
         Session::forget('cart');
         Session::forget('clientePotencial');
-        Session::forget('direccionClientePotencial');
+        //Session::forget('direccionClientePotencial');
         Session::forget('formaPago');
 
-        return redirect()->route('producto.index')->with("exito", "Gracias por su compra!!!");
+        return readirect()->route('producto.index')->with("exito", "Gracias por su compra!!!");
     }
     
  
