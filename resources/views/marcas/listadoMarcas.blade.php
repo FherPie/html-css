@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Marcas')
 @section('content')
-    <div class="container mt-5">
+    <div class="container ">
         <h1 class="">Marcas para mascotas</h1>
         <p class="mb-0 text-justify alert alert-light">En Mascoteros puedes encontrar una gran variedad de productos para la
             alimentación
@@ -29,6 +29,8 @@
             @foreach ($objeto_marcas as $marcas)
                 <a href="{{ route('producto.catalogo', ['id_marca' => $marcas->id_marca]) }}"
                     class="list-group-item list-group-item-action " data-aos="flip-up">{{ $marcas->nombre }}</a>
+                   
+
             @endforeach
         </div>
     </div>

@@ -24,7 +24,7 @@ class listadoMArcasController extends Controller
     public
     function index(){
         $marcas =DB::table('marca as ma')
-        ->select('ma.nombre', 'ma.id_marca')
+        ->select('ma.nombre', 'ma.id_marca', 'ma.version', 'ma.codigo')
         ->orderBy('ma.nombre', 'asc')
         ->get();
     

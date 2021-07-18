@@ -12,8 +12,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css')}}"/>
-  <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css.map')}}"/>
+  <link rel="stylesheet"  type="text/css" href="{{ URL::to('css/bootstrap.min.css')}}"/>
+  <link rel="stylesheet"  type="text/css" href="{{ URL::to('css/bootstrap.min.css.map')}}"/>
   
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
@@ -22,7 +22,8 @@
 
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick.css')}}"/>
 <link rel="stylesheet" href="{{ URL::to('src/slick/slick-theme.css')}}"/>
-<link rel="stylesheet" href="{{ URL::to('src/css/app.css')}}"/>
+{{-- 
+<link rel="stylesheet" href="{{ URL::to('css/app.css')}}"/> --}}
  @yield('styles')
 <!--  <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 </head>
@@ -30,10 +31,10 @@
 @include('partials.header')
 <!-- <aside class="aside"> -->
 <!-- </aside> -->
-<div class="container-fuid mt-3 clasePerfilMargenSuperior">
+<div class="container navbar-static-top mt-5">
 
 <div class="row">
-		<div class="col-md-3 ">
+		<div class="col-md-3  ">
 		     <div class="list-group ">
               <a href="{{route('users.orders')}}" class="list-group-item list-group-item-action active">Pedidos</a>
               <a href="{{route('users.profile')}}" class="list-group-item list-group-item-action">Perfil</a>
@@ -43,6 +44,8 @@
 		</div>
 <div class="col-md-9">
     @yield('content')
+
+    
 </div>
 </div>
 

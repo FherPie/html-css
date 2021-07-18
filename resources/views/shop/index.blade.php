@@ -3,6 +3,7 @@
 @section('title')
     Tienda
 @endsection
+@section('content')
 <header>
 
     <!--Carousel Wrapper-->
@@ -69,7 +70,7 @@
     <!--/.Carousel Wrapper-->
 </header>
 
-@section('content')
+
 
     @if (Session::has('exito'))
         <div class="row">

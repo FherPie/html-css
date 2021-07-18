@@ -9,8 +9,8 @@
 @section('content')
     @if (Session::has('cart'))
 
-
-        <div class="container mt-5 clasePerfilMargenSuperior">
+        <hr>
+        <div class="container  ">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card  table-responsive">
@@ -32,17 +32,17 @@
                                         <td>
                                             <figure class="media">
                                                 <!-- <div class="img-wrap"><img src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
-                   class="img-thumbnail img-sm"></div> -->
+                       class="img-thumbnail img-sm"></div> -->
                                                 <figcaption class="media-body">
                                                     <h6 class="title text-truncate">{{ $producto['item']['nombre'] }}</h6>
                                                     <!-- <dl class="param param-inline small">
-                    <dt>Size: </dt>
-                    <dd>XXL</dd>
-                  </dl> -->
+                        <dt>Size: </dt>
+                        <dd>XXL</dd>
+                      </dl> -->
                                                     <!-- <dl class="param param-inline small">
-                    <dt>Color: </dt>
-                    <dd>Orange color</dd>
-                  </dl> -->
+                        <dt>Color: </dt>
+                        <dd>Orange color</dd>
+                      </dl> -->
                                                 </figcaption>
                                             </figure>
                                         </td>

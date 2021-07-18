@@ -26,7 +26,7 @@ class OrdersController extends Controller
         $queries=[];
 
         $columns=[
-          'estadoPedido', 'total'
+          'estado_pedido', 'total'
         ];
  
         foreach ($columns as $column) {
@@ -38,7 +38,7 @@ class OrdersController extends Controller
         
         if(request()->has('search')){
             $search= request('search');
-            $orders= $orders->where('estadoPedido', 'like', '%'. $search.'%')
+            $orders= $orders->where('estado_pedido', 'like', '%'. $search.'%')
             ->orWhere('users.name',  'like', '%'. $search.'%');
             $queries['search']=$search;
         }

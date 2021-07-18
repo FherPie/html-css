@@ -66,7 +66,7 @@
                     <a href="{{ url('afiliados') }}">LLegar a ser Afiliado</a>
                 </p>
                 <p>
-                    <a href="#!">Tarifas de Envío</a>
+                    <a href="{{ route('acerca') }}">Proyectos</a>
                 </p>
                 <p>
                     <a href="{{ url('nosotros') }}">Nosotros</a>

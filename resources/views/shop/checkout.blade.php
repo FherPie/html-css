@@ -3,9 +3,10 @@
 @section('styles')
 @endsection()
 @section('content')
-    <div class="container mt-5 clasePerfilMargenSuperior">
+    <div class=" container">
+        <div class="row ">
 
-        {{-- <div class="row mt-5">
+            {{-- <div class="row mt-5">
             <div class="col-sm">
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -18,9 +19,9 @@
         </div> --}}
 
 
-            <form id="check-out" action="{{ route('guardarPedido') }}" method="post">
-
-                <div class="row">
+            <form class=" form-text " id="check-out" action="{{ route('guardarPedido') }}" method="post">
+                {{ csrf_field() }}
+                <div class="row mt-2">
                     <!--DATOS PERSONALES-->
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="card">
@@ -31,8 +32,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nombres">Nombres:</label>
-                                    <input type="text" name="nombres" class="form-control" value="{{ Session::has('clientePotencial') ? Session::get('clientePotencial')->name: old('nombres') }}"
-                                        id="nombres" placeholder="Ingrese sus nombres">
+                                    <input type="text" name="nombres" class="form-control" value=" {{ Session::has('clientePotencial') ? Session::get('clientePotencial')->nombres :  old('nombres') }}"
+                                        id="nombres" placeholder="Ingrese sus nombres"></input>
 
                                     <small>{!! $errors->first('nombres', ' <div class="invalid-feedback text-danger">:message</div>') !!}</small>
                                     <div class="valid-feedback">Bien.</div>
@@ -60,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="celular">Celular:</label>
-                                    <input type="text" name="celular" class="form-control" value="{{ old('celular') }}"
+                                    <input type="text" name="celular" class="form-control" value="{{ Session::has('clientePotencial') ? Session::get('clientePotencial')->celular: old('celular') }}"
                                         id="celular" placeholder="Ingrese su celular">
                                     <small>{!! $errors->first('celular', ' <div class=" text-danger">:message</div>') !!}</small>
                                     <div class="valid-feedback">Bien.</div>
@@ -78,7 +79,7 @@
                                 <div class="form-group">
                                     <h5>Datos de Entrega</h5>
                                 </div>
-                                {{-- <div class="form-group">
+                              <div class="form-group">
                                 <label for="principal">Calle Principal:</label>
                                 <input type="text" id="principal"
                                     value="{{ Session::has('direccionClientePotencial') ? Session::get('direccionClientePotencial')->callePrimaria : old('principal') }}"
@@ -113,7 +114,7 @@
                                     <small>{!! $errors->first('referencia', ' <div class=" text-danger">:message</div>')!!}</small>
                                 <div class="valid-feedback">Bien.</div>
                                 <div class="invalid-feedback">Por favor ingrese referencia de la casa</div>
-                            </div> --}}
+                            </div> 
                                 {{-- <div class="form-group">
                                 <label for="provincia">Provincia:</label>
                                 <select name="provincia" id="provincia" class="form-control input-lg dynamic"
@@ -242,78 +243,78 @@
                         </div>
                     </div>
                 </div>
-                {{ csrf_field() }}
+               
             </form>
 
 
-        <div class="row mt-5">
-            <div class="col-sm">
-                {{-- @if (count($errors) > 0)
+            <div class="row mt-5">
+                <div class="col-sm">
+                    {{-- @if (count($errors) > 0)
                     <div class="alert alert-danger ">
                         @foreach ($errors->all() as $error)
                             <p>{{ $error }}</p>
                         @endforeach
                     </div>
                 @endif --}}
+                </div>
             </div>
+
         </div>
+    @endsection
+    @section('scripts')
+        <script>
+            //dd the checkout buttons, set up the order and approve the order
 
-    </div>
-@endsection
-@section('scripts')
-    <script>
-        //dd the checkout buttons, set up the order and approve the order
-
-        // paypal.Buttons({
-        //     createOrder: function(data, actions) {
-        //         return actions.order.create({
-        //             purchase_units: [{
-        //                 amount: {
-        //                     value: '20.99'
-        //                 }
-        //             }]
-        //         });
-        //     },
-        //     onApprove: function(data, actions) {
-        //         return actions.order.capture().then(function(details) {
-        //             alert('Transaction completed by ' + details.payer.name.given_name);
-        //         });
-        //     }
-        // }).render('#paypal-button-container'); // Display payment options on your web page
+             paypal.Buttons({
+                 createOrder: function(data, actions) {
+                    return actions.order.create({
+                       purchase_units: [{
+                           amount: {
+                                value: '20.99'
+                            }
+                        }]
+                    });
+                },
+             onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                    });
+                 }
+             }).render('#paypal-button-container'); // Display payment options on your web page
 
 
-        // var cambiarEnFuncionProvincia = function() {
-        //     console.log($('.dynamic').val());
-        //     if ($('.dynamic').val() != '') {
-        //         var select = $('.dynamic').attr("id");
-        //         var value = $('.dynamic').val();
-        //         var dependent = $('.dynamic').data('dependent');
-        //         var _token = $('input[name="_token"]').val();
-        //         console.log(_token);
-        //         $.ajax({
-        //             url: "ciudades",
-        //             method: "POST",
-        //             data: {
-        //                 select: select,
-        //                 value: value,
-        //                 _token: _token,
-        //                 dependent: dependent
-        //             },
-        //             success: function(result) {
-        //                 console.log("lLEG RESUL");
-        //                 $('#' + dependent).html(result);
-        //             }
-        //         })
-        //     }
-        // };
+            // var cambiarEnFuncionProvincia = function() {
+            //     console.log($('.dynamic').val());
+            //     if ($('.dynamic').val() != '') {
+            //         var select = $('.dynamic').attr("id");
+            //         var value = $('.dynamic').val();
+            //         var dependent = $('.dynamic').data('dependent');
+            //         var _token = $('input[name="_token"]').val();
+            //         console.log(_token);
+            //         $.ajax({
+            //             url: "ciudades",
+            //             method: "POST",
+            //             data: {
+            //                 select: select,
+            //                 value: value,
+            //                 _token: _token,
+            //                 dependent: dependent
+            //             },
+            //             success: function(result) {
+            //                 console.log("lLEG RESUL");
+            //                 $('#' + dependent).html(result);
+            //             }
+            //         })
+            //     }
+            // };
 
-        // cambiarEnFuncionProvincia();
+            // cambiarEnFuncionProvincia();
 
-        // $(document).ready(function() {
-        //     $('.dynamic').change(cambiarEnFuncionProvincia);
-        //     $('#provincia').change(function() {
-        //         $('#ciudad').val('');
-        //     });
-        // });
-    </script>
-@endsection
+            // $(document).ready(function() {
+            //     $('.dynamic').change(cambiarEnFuncionProvincia);
+            //     $('#provincia').change(function() {
+            //         $('#ciudad').val('');
+            //     });
+            // });
+        </script>
+    @endsection

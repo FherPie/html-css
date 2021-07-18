@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.17",
+        "bootstrap": "^5.0.2",
         "bootstrap-sass": "^3.3.7",
         "browser-sync": "^2.27.3",
         "browser-sync-webpack-plugin": "^2.3.0",

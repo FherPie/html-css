@@ -13,25 +13,13 @@
 
 
 @section('content')
-    <br />
-    <div class="row mt-5">
+    
+    <div class="container  mt-5">
 
-    </div>
-
-
-    {{ $Productos->total() }} Registros ¦ Página: {{ $Productos->currentpage() }} de {{ $Productos->lastPage() }}
-
-    <form>
-        Items por pagina: <select id="pagination">
-            <option value="5" @if ($items == 5) selected @endif>5</option>
-            <option value="10" @if ($items == 10) selected @endif>10</option>
-            <option value="25" @if ($items == 25) selected @endif>25</option>
-        </select>
-    </form>
     {{ $Productos->links('pagination::bootstrap-4') }}
     <div class="row">
         @foreach ($Productos as $product)
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 col">
                 <div class="card">
                     <img src="storage/catalogo/producto/{{ $product->imagen }}" class="card-img-top">
                     <div class="card-body">
@@ -50,7 +38,21 @@
             </div>
         @endforeach
     </div>
+
+    <hr>
     {{ $Productos->links('pagination::bootstrap-4') }}
+    {{ $Productos->total() }} Registros ¦ Página: {{ $Productos->currentpage() }} de {{ $Productos->lastPage() }}
+
+    <form>
+        Items por pagina: <select id="pagination">
+            <option value="5" @if ($items == 5) selected @endif>5</option>
+            <option value="10" @if ($items == 10) selected @endif>10</option>
+            <option value="25" @if ($items == 25) selected @endif>25</option>
+        </select>
+    </form>
+</div>
+
+
 
 @endsection
 

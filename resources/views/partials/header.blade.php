@@ -1,6 +1,8 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar">
-    <a class="navbar-brand" href="{{ route('producto.index') }}">Kreafastec</a>
+    <a class="navbar-brand" href="{{ route('producto.index') }}">
+        <img src="/img/svg/undraw_mobile_web_2g8b.svg" width="50" height="50" class="d-inline-block align-center"
+            alt="">
+        Kreafastec</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -68,9 +70,7 @@
                 <li class="nav-item">
                     <a class="nav-link  js-scroll-trigger" href="#footer">Contactos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link  js-scroll-trigger" href="/acerca">acerca De</a>
-                </li>
+
             @endif
 
 
@@ -94,7 +94,7 @@
                 </a>
                 <div class="dropdown-menu bg-primary" data-aos="zoom-in-right" aria-labelledby="navbarDropdown">
                     @if (Auth::check()) <a class="dropdown-item"
-                            href="{{ route('users.profile') }}">Perfil Usuario</a>
+                            href="{{ route('users.profile') }}">Perfil Usuario {{ auth()->user()->name }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('users.logout') }}">Cerrar
                         Sesion</a> @else <a class="dropdown-item"
@@ -130,12 +130,12 @@
             </li>
         </ul>
         <!--  FIN Social Icon  -->
-        <form class=" navbar-form " action="/catalogo" method="get" role="search">
+        <form class=" navbar-form  form-inline align-center" action="/catalogo" method="get" role="search">
             <div class=" form-group">
-            <input class="form-control" type="search" name="search" placeholder="Buscar Productos"
-                aria-label="Buscar Productos">
+                <input class="form-control" type="search" name="search" placeholder="Buscar Productos"
+                    aria-label="Buscar Productos">
             </div>
-           
+
             <button class=" btn  btn-outline-deep-orange" type="submit">Buscar</button>
 
         </form>

@@ -147,16 +147,16 @@ class ProductoController extends Controller
         $request->session()->put('clientePotencial', Auth::user());
         $FormasPago= FormaPago::all();
         
-        if( Auth::user()==null){   
-            Session::put('oldUrl', $request->url());
-            return redirect()->route('users.signin');
+        // if( Auth::user()==null){   
+        //     Session::put('oldUrl', $request->url());
+        //     return redirect()->route('users.signin');
          
-        }
+        // }
 
-        $provincia_list = Ubicaciones::where('codigo', '>', '0')->where('nivel', '=', '1')->orderBy('nombre', 'asc')
-        ->get();
+        // $provincia_list = Ubicaciones::where('codigo', '>', '0')->where('nivel', '=', '1')->orderBy('nombre', 'asc')
+        // ->get();
         
-        return view('shop.checkout', ['total'=>$total, 'formasPago'=> $FormasPago,   'provincia_list'=>$provincia_list]);
+        return view('shop.checkout', ['total'=>$total, 'formasPago'=> $FormasPago]);
         
     }
     public function postCheckout(){
