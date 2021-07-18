@@ -4,10 +4,11 @@
 @endsection
 @section('content')
     <div class="container">
-        
-        <div class="row justify-content-md-center" >
-            <div class="col col-md-auto shadow card border-light mb-3 mt-3">
-                <h1 class="mt-3">Bienvenido de Vuelta</h1>
+
+        <div class="row justify-content-md-center ">
+            <div class="col col-md-auto shadow card border-light  mt-5 ">
+                <img class="mb-4 center-block" src="/img/svg/login-in.svg" alt="" width="100" height="67">
+                <h1 class="">Bienvenido de Vuelta</h1>
                 <hr>
                 {{-- @if (count($errors) > 0)
 		<div class="alert alert-danger">
@@ -33,8 +34,8 @@
                     <div class="form-group">
                         <i class="fa fa-key"></i>
                         <label for="password">Contrasena:</label> <input type="password"
-                            class=" form-control {{ $errors->has('password') ? ' is-invalid' : '' }} bg-light shadow-sm" id="password" name="password"
-                            ></input>
+                            class=" form-control {{ $errors->has('password') ? ' is-invalid' : '' }} bg-light shadow-sm"
+                            id="password" name="password"></input>
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -45,9 +46,13 @@
 
                     <button type="submit" class="btn btn-blue-grey btn-block">Ingresar al sitio</button>
                     {{ csrf_field() }}
+
                 </form>
                 <hr class="  current">
+               
                 <p>Si no tiene una cuenta <a href="{{ route('users.signup') }}">Hágalo Aquí</a></p>
+               
+                <p class="mt-5 text-muted text-center">© 2017–2021</p>
             </div>
         </div>
     </div>

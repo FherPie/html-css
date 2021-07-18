@@ -2,6 +2,8 @@
 @section('title', 'Marcas')
 @section('content')
     <div class="container ">
+        <div class="row">
+            <div class="col col-xs-12 col-xl-12 mt-5 ">
         <h1 class="">Marcas para mascotas</h1>
         <p class="mb-0 text-justify alert alert-light">En Mascoteros puedes encontrar una gran variedad de productos para la
             alimentación
@@ -33,5 +35,7 @@
 
             @endforeach
         </div>
+    </div>
+</div>
     </div>
 @endsection

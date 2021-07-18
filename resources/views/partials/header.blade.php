@@ -132,11 +132,13 @@
         <!--  FIN Social Icon  -->
         <form class=" navbar-form  form-inline align-center" action="/catalogo" method="get" role="search">
             <div class=" form-group">
-                <input class="form-control" type="search" name="search" placeholder="Buscar Productos"
-                    aria-label="Buscar Productos">
-            </div>
+                {{-- <input class="form-control" type="search" name="search" placeholder="Buscar Productos"
+                    aria-label="Buscar Productos">  --}}
+                     <input type="search" name="search" class="form-control ds-input" id="search" placeholder="Buscar Producto..." aria-label="Buscar Productos..." autocomplete="on" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" style="position: relative; vertical-align: top;" dir="auto"> 
 
-            <button class=" btn  btn-outline-deep-orange" type="submit">Buscar</button>
+            </div>
+{{--             
+            <button class=" btn  btn-outline-deep-orange" type="submit" >Buscar</button> --}}
 
         </form>
     </div>

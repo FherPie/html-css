@@ -12,7 +12,7 @@
         <hr>
         <div class="container  ">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8 mt-xl-5 mt-5 mt-md-5 mt-lg-auto">
                     <div class="card  table-responsive">
                         <table class="table table-hover shopping-cart-wrap">
                             <thead class="text-muted">
@@ -78,7 +78,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4  mt-xl-5 mt-lg-5">
 
                     <div class="card" style="padding:15px;">
                         <table class="table table-hover shopping-cart-wrap">

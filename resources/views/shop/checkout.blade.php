@@ -3,7 +3,7 @@
 @section('styles')
 @endsection()
 @section('content')
-    <div class=" container">
+    <div class=" container ">
         <div class="row ">
 
             {{-- <div class="row mt-5">
@@ -21,7 +21,7 @@
 
             <form class=" form-text " id="check-out" action="{{ route('guardarPedido') }}" method="post">
                 {{ csrf_field() }}
-                <div class="row mt-2">
+                <div class="row mt-5">
                     <!--DATOS PERSONALES-->
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="card">

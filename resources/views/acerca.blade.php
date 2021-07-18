@@ -4,8 +4,11 @@
 
 
 @section('content')
+<div class=" container">
 
-<h1>hola qye tal</h1>
+    <div class="row">
+        <div class="col col-xl-12 mt-5">
+            <h1>hola qye tal</h1>
 <hr>
 
 <ul>
@@ -19,6 +22,16 @@
     @endforelse
 
 </ul>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
 @endsection
     
 

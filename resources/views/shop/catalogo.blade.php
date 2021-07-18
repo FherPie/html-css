@@ -14,12 +14,12 @@
 
 @section('content')
     
-    <div class="container  mt-5">
+    <div class="container mt-5 ">
 
     {{ $Productos->links('pagination::bootstrap-4') }}
     <div class="row">
         @foreach ($Productos as $product)
-            <div class="col-sm-6 col-md-4 col">
+            <div class="col-sm-6 col-md-4 col mt-5">
                 <div class="card">
                     <img src="storage/catalogo/producto/{{ $product->imagen }}" class="card-img-top">
                     <div class="card-body">
