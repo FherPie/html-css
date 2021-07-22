@@ -4,15 +4,18 @@
 <link rel="stylesheet" href="{{ URL::to('src/css/detailProductoCSS.css')}}"/>
 @endsection
  @section('content')
- <div class="card">
-            <div class="container-fliud">
+ <div class="container">
+     <div class="row">
+
+ <div class="card mt-5 col">
+       
                 <div class="wrapper row">
                     <div class="preview col-md-6">
                          <div class=" tab-content">
                           <div class="tab-pane active" >
                           @foreach($principal as $detalle)
                             @if($loop->first)
-                            <img id="pic-1"  src="storage/catalogo/producto/{{$detalle->nombre}}" alt="{{$detalle->nombre}}"  />
+                            <img id="pic-1"  src="/storage/{{$detalle->image}}" alt="{{$detalle->nombre}}"  />
                                 @endif
                              @endforeach
                         </div>
@@ -71,6 +74,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 @endsection

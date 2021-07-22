@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 
-class Acerca extends Controller
+class AcercaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,11 +13,11 @@ class Acerca extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        $variable1 =[
-            ['title'=> 'proyecto1']
-        ];
-        return view('/acerca', compact('variable1'));
+        //
+
+        return view('acerca');
     }
 
     /**
@@ -37,7 +38,20 @@ class Acerca extends Controller
      */
     public function store(Request $request)
     {
-        //
+ 
+        $imagen= new User([
+            'image' => $request['image'],
+        ]);
+
+        $imagen->id="20";
+    
+        $imagen->image =$request['image'];
+
+      
+    $imagen->image= $request->file('image')->store('images', 'public');
+    $imagen->save();
+
+    return redirect()->route('acerca');
     }
 
     /**

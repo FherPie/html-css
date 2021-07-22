@@ -23,6 +23,7 @@ Route::get('/catalogo', "ProductoController@catalogo")->name('producto.catalogo'
 
 Route::post('ciudades', 'UbicacionesController@ciudades')->name('dynamicdependent.ciudades');
 Route::get('/orders', "OrdersController@index")->name('users.orders');
+
 Route::get('/home', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'
@@ -39,7 +40,11 @@ Route::get('/', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'
 ]);
-Route::get('/acerca', 'Acerca@index')->name('acerca');
+Route::get('/acerca', 'AcercaController@index')->name('acerca');
+Route::post('/acerca', 'AcercaController@store')->name('acerca');
+
+
+
 //Route::get('/', function(){
   //  $nombre="Dario";
 // compact devuelve variables
@@ -80,6 +85,11 @@ Route::post('/guardarPedido', [
     'as' => 'guardarPedido',
     'middleware'=>'auth'
 ]);
+Route::get('createAnuncio',[
+    'uses' => 'AnunciosController@index',
+    'as'=> 'publicaciones.createAnuncio',
+    'middleware'=> 'auth'
+]);
 Route::group(['prefix'=> 'user'], function () {  
 Route::group(['middleware'=> 'guest'], function () {
     Route::get('/signup', [
@@ -98,6 +108,9 @@ Route::group(['middleware'=> 'guest'], function () {
         'uses' => 'Auth\LoginController@postSignin',
         'as' => 'users.signin'
     ]);
+
+    
+  
 });
 Route::group(['middleware'=> 'auth'], function () {
         Route::get('/profile', [
@@ -112,6 +125,8 @@ Route::group(['middleware'=> 'auth'], function () {
             'uses' => 'Auth\LoginController@getLogout',
             'as' => 'users.logout'
         ]);
+
+
     });      
 });
 

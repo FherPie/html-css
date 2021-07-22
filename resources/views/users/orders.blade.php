@@ -14,13 +14,14 @@
 
 
 
-    <form action="/orders" method="get">
-        <div class="input-group">
-            <input type="search" name="search" class="form-control" />
-            <span class="input-group-prepend">
-                <button type="submit" class="btn btn-primary"> Buscar </button>
-            </span>
+    <form class="" action="/orders" method="get">
+        <div class="row">
+    <div class=" input-group mt-2  mb-2 col-12">
+            <input type="search" name="search" class="  form-control "  placeholder="Buscar por nombre.." aria-label="Buscar por nombre.." aria-describedby="btn-buscar"/>
+            <button id="btn-buscar" type="submit" class=" btn-group-lg  btn-orange"> Buscar </button>
         </div>
+     
+    </div>
     </form>
 
 

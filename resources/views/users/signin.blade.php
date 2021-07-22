@@ -5,11 +5,13 @@
 @section('content')
     <div class="container">
 
-        <div class="row justify-content-md-center ">
-            <div class="col col-md-auto shadow card border-light  mt-5 ">
-                <img class="mb-4 center-block" src="/img/svg/login-in.svg" alt="" width="100" height="67">
+        <div class="row justify-content-center">
+            <div class="col col-md-8 col-sm-12 col-lg-5 col-xl-5 shadow-lg card rounded mt-5 ">
+                <div class=" text-center mt-3">
+                <img class="mb-4 center-block" src="/img/svg/login-in.svg" alt="" width="150" height="87">
                 <h1 class="">Bienvenido de Vuelta</h1>
-                <hr>
+            </div>
+               
                 {{-- @if (count($errors) > 0)
 		<div class="alert alert-danger">
 			@foreach ($errors->all() as $error)
@@ -17,7 +19,7 @@
 			@endforeach
 		</div>
 		@endif --}}
-                <form action="{{ route('users.signin') }}" method="post">
+                <form class="  form-switch" action="{{ route('users.signin') }}" method="post">
                     <div class="form-group">
                         <i class="fa fa-user"></i>
                         <label for="email">Correo Electronico:</label>

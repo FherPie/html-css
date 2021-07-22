@@ -4,9 +4,9 @@
 @endsection
 @section('content')
 <div class="container ">
-    <div class="row">
+    <div class="row justify-content-md-center">
 		
-        <div class="col-md-12 col-md-offset-6 mt-5 col shadow">
+        <div class="col col-md-5 shadow mt-5 border rounded">
 
         
             <h1>Registrarse</h1>
@@ -48,7 +48,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Registrarse</button>
-                <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+                
                 {{ csrf_field() }}
             </form>
       

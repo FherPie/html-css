@@ -69,7 +69,7 @@ class CheckOutController extends Controller
         ]);
         $pedido->user_id = $user->id;
 
-        $pedido->estado_pedido = 50;
+        $pedido->estadoPedido = 40;
         $pedido->formapago_id = $radio;
 
         if (Auth::user() !== null) {
