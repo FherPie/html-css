@@ -25,7 +25,7 @@ class ProductoController extends Controller
 
 //             $productos = DB::table('producto')->where('id_sub_categoria_producto', '=', $request->input('id'))->orderBy('nombre', 'asc')->paginate(5);
            
-        $queryUser->whereBetween('id_producto', [1, 8]);
+        //$queryUser->whereBetween('id_producto', [1, 8]);
         
 
         //         $subcategorias = DB::table('categoria_producto')->select('nombre', 'id_categoria_producto')->get();
@@ -47,7 +47,7 @@ class ProductoController extends Controller
 
         $queryUser = Producto::query();
 
-        $queryUser->whereBetween('id_producto', [8, 16]);
+        // queryUser->whereBetween('id_producto', [8, 16]);
 
         $productosPromociones = $queryUser->paginate(8);
 
@@ -64,10 +64,10 @@ class ProductoController extends Controller
             $producto= Producto::find($request->input('id'));
         }
         $producto->detallesArchivos=$producto->detallesArchivo()->get();
-        
-        
-       
-        return view('shop/productoVista', ['producto'=>$producto]);
+
+        $principal=$producto->detallesArchivo()->where('principal', '=', true)->get();
+        error_log($principal->first());
+        return view('shop/productoVista', ['producto'=>$producto,'principal'=>$principal]);
     }
       
     public function getAddToCart(Request $request, $id_producto){
@@ -133,7 +133,7 @@ class ProductoController extends Controller
         }
         $odlCart=Session::get('cart');
         $cart=new Carro($odlCart); 
-        return view('shop.shopping-cart', ['productos'=>$cart->items, 'precioTotal'=>$cart->totalPrice]);
+        return view('shop.shopping-cart', ['productos'=>$cart->items, 'precioTotal'=>$cart->totalPrice, 'precioConImpuesto'=>$cart->totalPrice*1.12, 'impuestos'=>$cart->totalPrice*0.12]);
     }
     
     public function getCheckout(Request $request){
@@ -147,16 +147,16 @@ class ProductoController extends Controller
         $request->session()->put('clientePotencial', Auth::user());
         $FormasPago= FormaPago::all();
         
-        if( Auth::user()==null){   
-            Session::put('oldUrl', $request->url());
-            return redirect()->route('users.signin');
+        // if( Auth::user()==null){   
+        //     Session::put('oldUrl', $request->url());
+        //     return redirect()->route('users.signin');
          
-        }
+        // }
 
-        $provincia_list = Ubicaciones::where('codigo', '>', '0')->where('nivel', '=', '1')->orderBy('nombre', 'asc')
-        ->get();
+        // $provincia_list = Ubicaciones::where('codigo', '>', '0')->where('nivel', '=', '1')->orderBy('nombre', 'asc')
+        // ->get();
         
-        return view('shop.checkout', ['total'=>$total, 'formasPago'=> $FormasPago,   'provincia_list'=>$provincia_list]);
+        return view('shop.checkout', ['total'=>$total, 'formasPago'=> $FormasPago]);
         
     }
     public function postCheckout(){
@@ -199,7 +199,7 @@ class ProductoController extends Controller
         $queries=[];
 
         $columns=[
-          'nombre', 'codigo', 'descripcion', 'nombre_comercial', 'id_sub_categoria_producto'
+          'nombre', 'codigo', 'descripcion', 'nombre_comercial', 'id_sub_categoria_producto', 'id_marca','marca'
         ];
  
         foreach ($columns as $column) {
@@ -208,8 +208,6 @@ class ProductoController extends Controller
                 $queries[$column]=request($column);
             }
         }
-
-
         
         if(request()->has('search')){
             $search= request('search');

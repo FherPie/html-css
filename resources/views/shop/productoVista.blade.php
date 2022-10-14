@@ -4,26 +4,28 @@
 <link rel="stylesheet" href="{{ URL::to('src/css/detailProductoCSS.css')}}"/>
 @endsection
  @section('content')
- <div class="card">
-            <div class="container-fliud">
+ <div class="container">
+     <div class="row">
+
+ <div class="card mt-5 col">
+       
                 <div class="wrapper row">
                     <div class="preview col-md-6">
-                        <div class=" tab-content">
-                          <div class="tab-pane active" ><img id="pic-1" src="https://www.w3schools.com/howto/img_nature.jpg" /></div>
+                         <div class=" tab-content">
+                          <div class="tab-pane active" >
+                          @foreach($principal as $detalle)
+                            @if($loop->first)
+                            <img id="pic-1"  src="/storage/{{$detalle->image}}" alt="{{$detalle->nombre}}"  />
+                                @endif
+                             @endforeach
+                        </div>
+              
+
+                        <!-- --<img id="pic-1"  src="storage/catalogo/producto/{{$principal->first->nombre}}" alt="{{$principal->first->nombre}}"  /> -->
+
                           <div id="imgtext"></div>
                         </div>
                         <ul class="preview-thumbnail nav nav-tabs">
-                          <li ><a><img  class="active" src="https://www.w3schools.com/howto/img_nature.jpg" alt="Nature" style="width:100%"
-                                onclick="myFunction(this);">
-                          </a></li>
-                          <li><a >   <img src="https://www.w3schools.com/howto/img_snow.jpg" alt="Snow" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                          <li><a > <img src="https://www.w3schools.com/howto/img_mountains.jpg" alt="Mountains" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                          <li><a > <img src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%"
-                            onclick="myFunction(this);"></a></li>
-                            <li><a > <img src="https://www.w3schools.com/howto/img_lights.jpg" alt="Lights" style="width:100%"
-                                onclick="myFunction(this);"></a></li>
 					    	@foreach($producto->detallesArchivo as $detalle)
 								<li><a > <img src="storage/catalogo/producto/{{$detalle->nombre}}" alt="{{$detalle->nombre}}" style="width:100%"
                                 onclick="myFunction(this);"></a></li>
@@ -59,11 +61,11 @@
                             <span class="color green"></span>
                             <span class="color blue"></span>
                         </h5> -->
-						<h4 class="price">Mas Descripción Adicional: 
+						<h4 class="price">Mas Descripción Adicional:</h4>
 						<p class="product-description">
-						{{$producto->informacion_adicional}}
+					   {!!$producto->informacion_adicional!!}
 						</p>
-						</h4>
+						
                         <div class="action">
 						<a href="{{route('producto.addToCart', ['id' => $producto->id_producto])}}" class=" add-to-cart btn btn-default pull-right">Agregar al carrito</a><!-- 
                             <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
@@ -72,10 +74,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 @endsection
 
 @section('scripts')
-<script type="text/javascript"  src="{{ URL::to('js/zommPlus.js')}}"></script>
+<!--script type="text/javascript"  src="{{ URL::to('js/zommPlus.js')}}"></script-->
 @endsection

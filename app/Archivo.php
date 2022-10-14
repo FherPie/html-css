@@ -18,7 +18,7 @@ class Archivo extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre',  'id_producto', 'url',
+        'nombre',  'id_producto', 'url', 'principal'
     ];
     
     /**
@@ -34,5 +34,12 @@ class Archivo extends Model
 
     public function producto() {
         return $this->belongsTo('App\Producto');
+    }
+
+    public function __toString() {
+        if(is_null($this->Archivo)) {
+            return 'NULL';
+        }
+        return $this->Archivo;
     }
 }

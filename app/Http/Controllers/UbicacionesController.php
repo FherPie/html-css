@@ -18,7 +18,6 @@ class UbicacionesController extends Controller
       
   function ciudades(Request $request)
     {
-     error_log("Llega Ciudades");
      $select = $request->get('select');
      $value = $request->get('value');
      $dependent = $request->get('dependent');
@@ -29,6 +28,8 @@ class UbicacionesController extends Controller
      {
       $output .= '<option value="'.$row->id_ubicaciones.'"   >'.$row->nombre.'</option>';
      }
+     
+     error_log("Llega Ciudades");
      echo $output;
     }
 }

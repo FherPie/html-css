@@ -13,131 +13,121 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+
 Route::get('nosotros', "ProductoController@nosotros");
-
 Route::get('afiliados', "ProductoController@afiliados");
-
+Route::get('/listadoMarcas', "listadoMArcasController@index")->name('Lista de Marcas');
 Route::get('/catalogo', "ProductoController@catalogo")->name('producto.catalogo');
 
+//peticiones para formularios con post
 
 Route::post('ciudades', 'UbicacionesController@ciudades')->name('dynamicdependent.ciudades');
-
-
 Route::get('/orders', "OrdersController@index")->name('users.orders');
-
-
 
 Route::get('/home', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'
 ]);
-
 Route::get('/vistaProducto', [
     'uses' => 'ProductoController@getProductoVista',
     'as' => 'producto.vista'
 ]);
-
 // Route::get('/{id?}', [
 //     'uses' => 'ProductoController@getIndex',
 //     'as' => 'producto.index'
 // ]);
-
 Route::get('/', [
     'uses' => 'ProductoController@getIndex',
     'as' => 'producto.index'
 ]);
+Route::get('/acerca', 'AcercaController@index')->name('acerca');
+Route::post('/acerca', 'AcercaController@store')->name('acerca');
 
+
+
+//Route::get('/', function(){
+  //  $nombre="Dario";
+// compact devuelve variables
+   // return view('acerca', compact('nombre'));
+//})->name('acerca');
 Route::get('/add-to-cart/{id}', [
     'uses' => 'ProductoController@getAddToCart',
     'as' => 'producto.addToCart'
 ]);
-
 // Route::get('/add-to-cart-from-details/{id}', [
 //     'uses' => 'ProductoController@getAddToCartFromDetailsProducto',
 //     'as' => 'producto.addToCartFromDetailsProducto'
 // ]);
-
 Route::get('/add-to-cart-checkout/{id}', [
     'uses' => 'ProductoController@getAddToCartCheckOut',
     'as' => 'producto.addToCartCheckOut'
 ]);
-
-
-
+// con parametros
 Route::get('/reduce-to-cart-checkout/{id}', [
     'uses' => 'ProductoController@getReduceCartCheckOut',
     'as' => 'producto.reduceToCartCheckOut'
 ]);
-
 Route::get('/remove-to-cart-checkout/{id}', [
     'uses' => 'ProductoController@removeItem',
     'as' => 'producto.removeItem'
 ]);
-
 Route::get('/shoping-cart', [
     'uses' => 'ProductoController@getCart',
     'as' => 'producto.shopingCart'
 ]);
-
-
 Route::get('/checkout', [
     'uses' => 'ProductoController@getCheckout',
     'as' => 'checkout',
     'middleware'=>'auth'
 ]);
-
 Route::post('/guardarPedido', [
     'uses' => 'CheckOutController@postCheckout',
     'as' => 'guardarPedido',
     'middleware'=>'auth'
 ]);
-
-Route::group(['prefix'=> 'user'], function () {
-    
-    
+Route::get('createAnuncio',[
+    'uses' => 'AnunciosController@index',
+    'as'=> 'publicaciones.createAnuncio',
+    'middleware'=> 'auth'
+]);
+Route::group(['prefix'=> 'user'], function () {  
 Route::group(['middleware'=> 'guest'], function () {
-    
-
     Route::get('/signup', [
         'uses' => 'Auth\RegisterController@getSignup',
         'as' => 'users.signup'
     ]);
-    
     Route::post('/signup', [
         'uses' => 'Auth\RegisterController@postSignup',
         'as' => 'users.signup'
     ]);
-    
     Route::get('/signin', [
         'uses' => 'Auth\LoginController@getSignin',
         'as' => 'users.signin'
     ]);
-    
     Route::post('/signin', [
         'uses' => 'Auth\LoginController@postSignin',
         'as' => 'users.signin'
     ]);
 
+    
+  
 });
-
 Route::group(['middleware'=> 'auth'], function () {
-        
         Route::get('/profile', [
             'uses' => 'Auth\LoginController@getProfile',
             'as' => 'users.profile'
         ]);
-        
         Route::post('/profile', [
             'uses' => 'Auth\LoginController@postProfile',
             'as' => 'users.profile'
         ]);
-        
         Route::get('/logout', [
             'uses' => 'Auth\LoginController@getLogout',
             'as' => 'users.logout'
         ]);
-    });
-        
+
+
+    });      
 });
 
 

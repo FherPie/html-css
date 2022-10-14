@@ -43,8 +43,8 @@ class OrdersController extends Controller
             $queries['search']=$search;
         }
 
-        $orders= $orders->where('users.name', 'like', '%'. $search.'%')
-        ->orWhere('users.name',  'like', '%'. $search.'%');
+        // $orders= $orders->where('users.name', 'like', '%'. $search.'%')
+        // ->orWhere('users.name',  'like', '%'. $search.'%');
 
 
         if(request()->has('sort')){
