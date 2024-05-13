@@ -1,0 +1,63 @@
+Se quita el nodo 
+Se hace un compose dowm
+Se hace el reverso del compose down
+se hace el compose dan
+Se agrega el nodo.
+
+
+
+realizar el merge
+primero se clona
+se compila
+
+
+scp micro-gateway-1.6.1.jar msacloud@10.31.32.14:/dockerappsvol/dockerappdata/microgateway/bin
+
+
+/dockerappsvol/dockerappdata/microgateway-andres/
+
+scp Dockerfile msacloud@10.31.32.14:/dockerappsvol/dockerappdata/microgateway
+
+
+
+scp Dockerfile msacloud@192.168.37.146:/dockerappsvol/dockerappdata/microgateway-andres/
+
+
+scp micro-gateway-1.6.1.jar msacloud@192.168.37.146:/dockerappsvol/dockerappdata/microgateway-andres/bin
+
+
+scp micro-gateway-1.6.1.jar msacloud@10.31.32.14:/dockerappsvol/dockerappdata/microgateway/bin
+
+
+
+cd /dockerappsvol/dockerappdata/microgateway-andres/ && docker build -f Dockerfile -t microgateway:1.6.5 .
+
+
+cd /dockerappsvol/dockerappdata/microgateway/log/ && tail -f micro-gateway-*.log
+
+
+cd /dockerlogsvol/logs/microgateway_logs/ && tail -f micro*.log
+
+
+cd /dockerappsvol/dockerappdata/microgateway/ && sudo docker-compose -f docker-compose1.6.0.yml down
+
+cd /dockerappsvol/dockerappdata/microgateway-andres/ && docker-compose -f docker-compose2.yml down
+
+
+
+http://192.168.37.146:8584/rest/microGateway/invoke?bridgeEndpoint=true  nueva
+
+
+http://192.168.37.146:8582/rest/microGateway/invoke?bridgeEndpoint=true  antigua
+
+
+cd /dockerappsvol/dockerappdata/composer-new/app/log/ && tail -f composer_*.log
+
+
+
+c
+@rQ.3n3r0.2022
+
+
+    <Root level="ERROR">			
+			<AppenderRef ref="FileAppender" />	

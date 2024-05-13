@@ -1,0 +1,23 @@
+INSERT INTO public.categoria_producto(
+	id_categoria_producto, fecha_creacion, fecha_modificacion, usuario_creacion, usuario_modificacion, version, activo, codigo, color, descripcion, id_organizacion, id_sucursal, nombre)
+	VALUES (1, '2022-10-07', '2022-10-07', null, null, null, true, '001', 'red', 'Categoria Perros', 1, 1, 'Canes');
+	
+	
+INSERT INTO public.categoria_producto(
+	id_categoria_producto, fecha_creacion, fecha_modificacion, usuario_creacion, usuario_modificacion, version, activo, codigo, color, descripcion, id_organizacion, id_sucursal, nombre)
+	VALUES (2, '2022-10-07', '2022-10-07', null, null, null, true, '002', 'green', 'Categoria Gatos', 1, 1, 'Gatos');
+	
+
+
+INSERT INTO public.categoria_producto(
+	id_categoria_producto, fecha_creacion, fecha_modificacion, usuario_creacion, usuario_modificacion, version, activo, codigo, color, descripcion, id_organizacion, id_sucursal, nombre)
+	VALUES (2, '2022-10-07', '2022-10-07', null, null, null, true, '002', 'green', 'Categoria Gatos', 1, 1, 'Gatos');
+	
+	
+	
+	campos carousel
+	
+- ,urldeinformacion,,booleanSlider
+
+alter table producto add column urldeinformacion character varying(300);
+alter table producto add column booleanSlider boolean;

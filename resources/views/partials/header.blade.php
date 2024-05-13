@@ -3,10 +3,14 @@
   <div class="col-sm-8">.col-sm-8</div>
 </div> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar">
-<a class="navbar-brand" href="{{route('producto.index')}}">EMPRESA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="{{ route('producto.index') }}">
+        <img src="/img/svg/undraw_mobile_web_2g8b.svg" width="50" height="50" class="d-inline-block align-center"
+            alt="">
+        Dogsi tú mascota tú familia</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	  		<!-- Categorias  -->
